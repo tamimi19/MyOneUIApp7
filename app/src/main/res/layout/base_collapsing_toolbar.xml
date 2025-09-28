@@ -14,19 +14,15 @@
         android:fitsSystemWindows="true"
         style="@style/Widget.Design.CollapsingToolbar"
         app:contentScrim="?attr/colorPrimary"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+        app:titleEnabled="true"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        app:expandedTitleMarginStart="16dp"
+        app:expandedTitleMarginEnd="16dp"
+        app:expandedTitleMarginBottom="16dp">
 
-        <!-- صورة خلفية قابلة للطي (اختياري) -->
-        <ImageView
-            android:id="@+id/expanded_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher"
-            app:layout_collapseMode="parallax"
-            app:layout_collapseParallaxMultiplier="0.7" />
+        <!-- تمت إزالة صورة الخلفية كما طلبت --> 
 
-        <!-- Toolbar مثبّت عند الانكماش -->
+        <!-- Toolbar داخل CollapsingToolbarLayout -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
