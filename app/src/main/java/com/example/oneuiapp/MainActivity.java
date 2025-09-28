@@ -11,11 +11,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // bind toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // collapsing toolbar
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(getString(R.string.title_features));
-        // لا نعيّن سمات نصية برمجياً هنا — سمات العنوان تُطبق من XML وتُحل عبر OneUITheme
+
+        // apply fixed (non-attr) text appearances programmatically to avoid theme resolution errors
+        collapsingToolbar.setExpandedTitleTextAppearance(R.style.ExpandedTitleFixed);
+        collapsingToolbar.setCollapsedTitleTextAppearance(R.style.CollapsedTitleFixed);
+
+        // spacing similar to One UI
+        collapsingToolbar.setExpandedTitleMarginStart(dpToPx(16));
+        collapsingToolbar.setExpandedTitleMarginBottom(dpToPx(16));
+    }
+
+    private int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round(dp * density);
     }
 }
