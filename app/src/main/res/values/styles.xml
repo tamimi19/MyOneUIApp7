@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- لا تعريف محلي لـ OneUITheme هنا — نستخدم الثيم المزوّد بواسطة oneui-design -->
-    <!-- Expanded and collapsed title use One UI attributes so they'll resolve at runtime -->
-    <style name="ExpandedTitle" parent="TextAppearance.AppCompat.Title">
+    <!-- لا تُعرِّف OneUITheme هنا — استخدم الثيم من مكتبة oneui-design في الـ Manifest -->
+
+    <!-- Text appearances with fixed colors (avoid ?attr resolution) -->
+    <style name="ExpandedTitleFixed" parent="TextAppearance.AppCompat.Title">
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textColor">@color/oneui_on_primary</item>
     </style>
 
-    <style name="CollapsedTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+    <style name="CollapsedTitleFixed" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textColor">@color/oneui_on_primary</item>
     </style>
 
 </resources>
