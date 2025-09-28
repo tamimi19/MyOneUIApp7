@@ -1,36 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<?xml version="1.0" encoding="utf-8"?> 
+<androidx.coordinatorlayout.widget.CoordinatorLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- شريط التطبيق القابل للانهيار -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!-- Include the collapsing toolbar layout -->
+    <include layout="@layout/base_collapsing_toolbar" />
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <!-- شريط الأدوات (Toolbar) -->
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- المحتوى الأصلي ضمن NestedScrollView -->
+    <!-- Main content within NestedScrollView -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,7 +20,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- العنوان (مقتبس من الملف الأصلي) -->
+            <!-- Title -->
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
@@ -52,7 +30,7 @@
                 android:textSize="24sp"
                 android:layout_marginBottom="16dp" />
 
-            <!-- نصوص المميزات (احتفظت بالمحتوى الأصلي) -->
+            <!-- Feature descriptions -->
             <TextView
                 android:id="@+id/text_feature_1"
                 android:layout_width="wrap_content"
