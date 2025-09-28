@@ -16,17 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(getString(R.string.title_features));
-
-        // ضبط أنماط العنوان برمجياً (تجنب قراءة السمات أثناء نفخ الـ XML)
-        collapsingToolbar.setCollapsedTitleTextAppearance(R.style.CollapsedTitle);
-        collapsingToolbar.setExpandedTitleTextAppearance(R.style.ExpandedTitle);
-
-        collapsingToolbar.setExpandedTitleMarginStart(dpToPx(16));
-        collapsingToolbar.setExpandedTitleMarginBottom(dpToPx(16));
-    }
-
-    private int dpToPx(int dp) {
-        float density = getResources().getDisplayMetrics().density;
-        return Math.round(dp * density);
+        // لا نعيّن سمات نصية برمجياً هنا — سمات العنوان تُطبق من XML وتُحل عبر OneUITheme
     }
 }
