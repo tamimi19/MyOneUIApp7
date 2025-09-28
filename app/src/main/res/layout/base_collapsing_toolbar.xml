@@ -18,9 +18,11 @@
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         app:expandedTitleMarginStart="16dp"
         app:expandedTitleMarginEnd="16dp"
-        app:expandedTitleMarginBottom="16dp">
+        app:expandedTitleMarginBottom="16dp"
+        app:expandedTitleTextAppearance="@style/ExpandedTitle"
+        app:collapsedTitleTextAppearance="@style/CollapsedTitle">
 
-        <!-- no background image (removed) -->
+        <!-- الخلفية أُزيلت كما طلبت -->
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
