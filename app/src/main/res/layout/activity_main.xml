@@ -37,27 +37,49 @@
         android:padding="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- مثال على المحتوى الأصلي (TextViews) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- العنوان (مقتبس من الملف الأصلي) -->
             <TextView
-                android:id="@+id/text1"
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_features"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- نصوص المميزات (احتفظت بالمحتوى الأصلي) -->
+            <TextView
+                android:id="@+id/text_feature_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/feature1"
-                style="@style/OneUI_TextAppearance" />
+                android:layout_marginTop="8dp" />
 
             <TextView
-                android:id="@+id/text2"
+                android:id="@+id/text_feature_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/feature2"
-                style="@style/OneUI_TextAppearance" />
+                android:layout_marginTop="8dp" />
 
-            <!-- المزيد من المحتوى الأصلي... -->
+            <TextView
+                android:id="@+id/text_feature_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feature3"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/text_feature_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feature4"
+                android:layout_marginTop="8dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
