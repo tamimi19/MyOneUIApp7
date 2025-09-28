@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- OneUITheme should match the name you put in AndroidManifest.xml -->
-    <style name="OneUITheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#15202B</item>
-        <item name="colorPrimaryDark">#0F1720</item>
-        <item name="colorAccent">#0A84FF</item>
-        <item name="android:statusBarColor">#0F1720</item>
-    </style>
-
-    <!-- Expanded and collapsed title appearances to mimic One UI -->
+    <!-- Expanded and collapsed title appearances -->
     <style name="ExpandedTitle" parent="TextAppearance.AppCompat.Title">
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
@@ -21,5 +12,4 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
-
 </resources>
