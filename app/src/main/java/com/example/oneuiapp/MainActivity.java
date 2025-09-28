@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.example.oneuiapp;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +10,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
-        // تهيئة Toolbar وربطه بـ ActionBar
+
+        // ربط Toolbar كـ ActionBar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        
-        // ربط CollapsingToolbarLayout وتعيين العنوان من موارد السلاسل
+
+        // تعيين عنوان CollapsingToolbar
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(getString(R.string.title_features));
     }
