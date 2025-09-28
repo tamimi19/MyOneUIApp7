@@ -8,9 +8,11 @@
     <include layout="@layout/base_collapsing_toolbar"/>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
+        android:overScrollMode="always"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
