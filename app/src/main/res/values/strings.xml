@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">OneUI App</string>
+    <string name="title_features">One UI Features</string>
+    <string name="feature1">Content is placed at the top of the screen, controls at the bottom for easier reach.</string>
+    <string name="feature2">Minimalist design that eliminates distractions to help focus on current tasks.</string>
+    <string name="feature3">Clear visuals with consistent rounded corners, maximizing readability.</string>
+    <string name="feature4">Supports Night Mode (dark theme) for comfortable viewing in low light.</string>
+    <string name="title_settings">Settings</string>
+    <string name="settings_info">This is a placeholder for the Settings page.</string>
+</resources>
