@@ -2,8 +2,8 @@ package com.example.oneuiapp;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
+import androidx.sesl.widget.SeslToolbar;
+import androidx.sesl.appbar.SeslCollapsingToolbarLayout;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -11,12 +11,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Bind Toolbar as ActionBar
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        // استدعاء شريط الأدوات الجديد من SESL وتعيينه كـ ActionBar
+        SeslToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Set title for CollapsingToolbar
-        CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(getString(R.string.title_features));
+        // استدعاء CollapsingToolbarLayout الجديد من SESL وتعيين العنوان والعنوان الفرعي
+        SeslCollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitle("عنوان التطبيق");
+        collapsingToolbar.seslSetSubtitle("العنوان الفرعي");
     }
 }
