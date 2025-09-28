@@ -18,5 +18,14 @@ public class MainActivity extends AppCompatActivity {
         // تعيين عنوان CollapsingToolbar (One UI style)
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(getString(R.string.title_features));
+
+        // تحسين المسافات لعنوان الموسّع ليشبه سلوك One UI
+        collapsingToolbar.setExpandedTitleMarginStart(dpToPx(16));
+        collapsingToolbar.setExpandedTitleMarginBottom(dpToPx(16));
+    }
+
+    private int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round(dp * density);
     }
 }
