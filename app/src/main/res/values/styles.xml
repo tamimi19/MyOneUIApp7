@@ -1,0 +1,11 @@
+<resources>
+    <!-- ثيم التطبيق الرئيسي بدون ActionBar مدمج -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- هنا إعدادات الثيم الأصلية (ألوان، سمات الخط، إلخ) -->
+    </style>
+
+    <!-- نمط CollapsingToolbarLayout مخصص يرث من نمط OneUI -->
+    <style name="CustomCollapsingToolbar" parent="@style/Widget.Design.CollapsingToolbar">
+        <!-- تخصيص مظهر العنوان أو الخصائص الأخرى إذا لزم -->
+    </style>
+</resources>
