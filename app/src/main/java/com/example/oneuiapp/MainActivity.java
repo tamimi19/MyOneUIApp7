@@ -11,11 +11,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // ربط Toolbar كـ ActionBar
+        // Bind Toolbar as ActionBar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // تعيين عنوان CollapsingToolbar
+        // Set title for CollapsingToolbar
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(getString(R.string.title_features));
     }
