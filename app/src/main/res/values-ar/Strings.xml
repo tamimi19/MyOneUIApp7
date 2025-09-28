@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">تطبيق OneUI</string>
+    <string name="title_features">مميزات One UI</string>
+    <string name="feature1">يتم عرض المحتوى في أعلى الشاشة والتحكم في الأسفل لسهولة الوصول.</string>
+    <string name="feature2">تصميم بسيط يزيل التشويش لمساعدة المستخدم على التركيز على المهام.</string>
+    <string name="feature3">عناصر واجهة واضحة بزوايا مستديرة متسقة لتعزيز قابلية القراءة.</string>
+    <string name="feature4">يدعم الوضع الليلي (الوضع الداكن) لراحة العرض في الإضاءة المنخفضة.</string>
+    <string name="title_settings">الإعدادات</string>
+    <string name="settings_info">هذه صفحة إعدادات التطبيق (قيد التطوير).</string>
+</resources>
