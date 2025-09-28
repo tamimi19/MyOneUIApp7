@@ -11,19 +11,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // bind toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // collapsing toolbar
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(getString(R.string.title_features));
 
-        // apply One UI-like title appearances
+        // ضبط أنماط العنوان برمجياً (تجنب قراءة السمات أثناء نفخ الـ XML)
         collapsingToolbar.setCollapsedTitleTextAppearance(R.style.CollapsedTitle);
         collapsingToolbar.setExpandedTitleTextAppearance(R.style.ExpandedTitle);
 
-        // spacing similar to One UI
         collapsingToolbar.setExpandedTitleMarginStart(dpToPx(16));
         collapsingToolbar.setExpandedTitleMarginBottom(dpToPx(16));
     }
