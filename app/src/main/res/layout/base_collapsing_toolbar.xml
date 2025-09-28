@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.sesl.appbar.SeslAppBarLayout
+<com.google.android.material.appbar.AppBarLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_bar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true">
 
-    <androidx.sesl.appbar.SeslCollapsingToolbarLayout
+    <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/collapsing_toolbar"
-        style="@style/Widget.Design.CollapsingToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
+        android:fitsSystemWindows="true"
+        style="@style/Widget.Design.CollapsingToolbar"
+        app:contentScrim="?attr/colorPrimary"
         app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-        <!-- صورة خلفية قابلة للطي (مثال على محتوى تباكسي) -->
+        <!-- صورة خلفية قابلة للطي (اختياري) -->
         <ImageView
+            android:id="@+id/expanded_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"
             app:layout_collapseMode="parallax"
-            app:layout_collapseParallaxMultiplier="0.7"
-            android:src="@mipmap/ic_launcher" />
+            app:layout_collapseParallaxMultiplier="0.7" />
 
-        <!-- شريط الأدوات الجديد من SESL -->
-        <androidx.sesl.widget.SeslToolbar
+        <!-- Toolbar مثبّت عند الانكماش -->
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_collapseMode="pin" />
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    </androidx.sesl.appbar.SeslCollapsingToolbarLayout>
-</androidx.sesl.appbar.SeslAppBarLayout>
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+</com.google.android.material.appbar.AppBarLayout>
