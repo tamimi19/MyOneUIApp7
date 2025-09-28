@@ -12,16 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:fitsSystemWindows="true"
+        style="@style/Widget.Design.CollapsingToolbar"
         app:contentScrim="?attr/colorPrimary"
         app:titleEnabled="true"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         app:expandedTitleMarginStart="16dp"
         app:expandedTitleMarginEnd="16dp"
-        app:expandedTitleMarginBottom="16dp"
-        app:expandedTitleTextAppearance="@style/ExpandedTitle"
-        app:collapsedTitleTextAppearance="@style/CollapsedTitle">
+        app:expandedTitleMarginBottom="16dp">
 
-        <!-- no background image (removed as requested) -->
+        <!-- no background image (removed) -->
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
