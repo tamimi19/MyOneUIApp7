@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.appbar.AppBarLayout 
+<androidx.sesl.appbar.SeslAppBarLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/app_bar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.google.android.material.appbar.CollapsingToolbarLayout
+    <androidx.sesl.appbar.SeslCollapsingToolbarLayout
         android:id="@+id/collapsing_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:fitsSystemWindows="true"
         style="@style/Widget.Design.CollapsingToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-        <!-- Toolbar inside CollapsingToolbarLayout -->
-        <androidx.appcompat.widget.Toolbar
+        <!-- صورة خلفية قابلة للطي (مثال على محتوى تباكسي) -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_collapseMode="parallax"
+            app:layout_collapseParallaxMultiplier="0.7"
+            android:src="@mipmap/ic_launcher" />
+
+        <!-- شريط الأدوات الجديد من SESL -->
+        <androidx.sesl.widget.SeslToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_collapseMode="pin"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:layout_collapseMode="pin" />
 
-    </com.google.android.material.appbar.CollapsingToolbarLayout>
-</com.google.android.material.appbar.AppBarLayout>
+    </androidx.sesl.appbar.SeslCollapsingToolbarLayout>
+</androidx.sesl.appbar.SeslAppBarLayout>
