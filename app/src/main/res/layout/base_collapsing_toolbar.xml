@@ -6,26 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
-    app:layout_behavior="com.example.oneuiapp.SafeAppBarBehavior"> <!-- ربط السلوك الآمن -->
+    android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/collapsing_toolbar"
-        style="@style/Widget.Design.CollapsingToolbar"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:fitsSystemWindows="true"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways"
-        app:expandedTitleGravity="bottom|center_horizontal"
-        app:expandedTitleMarginBottom="16dp"
-        app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Headline"
-        app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
-        app:extendedTitleEnabled="true">
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        app:expandedTitleGravity="start|bottom"
+        app:collapsedTitleGravity="start"
+        app:expandedTitleMarginStart="24dp"
+        app:expandedTitleMarginBottom="48dp"
+        app:contentScrim="?attr/colorPrimary">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_collapseMode="pin" />
+            app:layout_collapseMode="pin"
+            app:titleTextColor="@android:color/white" />
 
     </com.google.android.material.appbar.CollapsingToolbarLayout>
 
