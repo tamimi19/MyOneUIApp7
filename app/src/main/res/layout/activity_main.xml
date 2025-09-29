@@ -11,51 +11,61 @@
         android:id="@+id/nested_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:overScrollMode="always"
+        android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title_features"
-                android:textStyle="bold"
-                android:textSize="24sp"
-                android:layout_marginBottom="16dp" />
+            android:orientation="vertical"
+            android:padding="@dimen/sesl_list_subheader_height">
 
             <TextView
                 android:id="@+id/text_feature_1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/feature1"
-                android:layout_marginTop="8dp" />
+                android:textAppearance="?android:attr/textAppearanceListItem"
+                android:padding="16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?attr/isSeamless" />
 
             <TextView
                 android:id="@+id/text_feature_2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/feature2"
-                android:layout_marginTop="8dp" />
+                android:textAppearance="?android:attr/textAppearanceListItem"
+                android:padding="16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?attr/isSeamless" />
 
             <TextView
                 android:id="@+id/text_feature_3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/feature3"
-                android:layout_marginTop="8dp" />
+                android:textAppearance="?android:attr/textAppearanceListItem"
+                android:padding="16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?attr/isSeamless" />
 
             <TextView
                 android:id="@+id/text_feature_4"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/feature4"
-                android:layout_marginTop="8dp" />
+                android:textAppearance="?android:attr/textAppearanceListItem"
+                android:padding="16dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
