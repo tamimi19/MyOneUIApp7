@@ -4,18 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/app_bar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/collapsing_toolbar"
         android:layout_width="match_parent"
         android:layout_height="256dp"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+        android:fitsSystemWindows="true"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        app:contentScrim="?attr/colorPrimary"
         app:titleEnabled="true"
         app:expandedTitleMarginStart="24dp"
+        app:expandedTitleMarginEnd="24dp"
         app:expandedTitleMarginBottom="24dp"
-        app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        app:expandedTitleGravity="bottom|start"
+        app:collapsedTitleGravity="center_vertical|start"
         app:toolbarId="@id/toolbar">
 
         <androidx.appcompat.widget.Toolbar
