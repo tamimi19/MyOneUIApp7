@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         appBarLayout = findViewById(R.id.app_bar);
         
-        // تعيين العنوان (سيظهر كبيرًا عند التمدد ومصغرًا عند الطي)
+        // تعيين العنوان
         collapsingToolbar.setTitle(getString(R.string.title_features));
         
         // إخفاء عنوان ActionBar لأن CollapsingToolbar سيتولى العرض
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
         
-        // مراقبة التمرير (اختياري - يمكن استخدامه لإضافة سلوك مخصص)
+        // إضافة listener لمراقبة حالة التمرير (اختياري)
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
