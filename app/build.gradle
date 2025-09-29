@@ -10,7 +10,8 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.oneuiapp"
+        // Use Samsung internal package name to enable theming.
+        applicationId "com.sec.sesl.tester"
         minSdk 23
         targetSdk 34
         versionCode 1
