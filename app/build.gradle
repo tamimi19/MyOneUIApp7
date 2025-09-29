@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
 }
+
 android {
     namespace 'com.example.oneuiapp'
     compileSdk 34
@@ -24,7 +25,6 @@ android {
         }
         debug {
             debuggable true
-            // إضافة خاصية تسجيل الأخطاء في وضع التطوير
             buildConfigField "boolean", "ENABLE_CRASH_LOGGING", "true"
         }
     }
@@ -33,8 +33,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    
-// إزالة مكتبات Google الأصلية - مطلوب للعمل مع SESL
+}
+
 configurations.all {
     exclude group: 'androidx.appcompat', module: 'appcompat'
     exclude group: 'androidx.core', module: 'core'
@@ -55,7 +55,6 @@ configurations.all {
 }
 
 dependencies {
-    // OneUI Core Libraries (SESL) - الطبقة الأساسية التي تحل محل مكتبات Google
     implementation 'io.github.oneuiproject.sesl:appcompat:1.4.0'
     implementation 'io.github.oneuiproject.sesl:material:1.5.0'
     implementation 'io.github.oneuiproject.sesl:coordinatorlayout:1.0.0'
@@ -67,27 +66,13 @@ dependencies {
     implementation 'io.github.oneuiproject.sesl:viewpager:1.1.0'
     implementation 'io.github.oneuiproject.sesl:core:1.3.0'
     implementation 'io.github.oneuiproject.sesl:fragment:1.0.0'
-    
-    
-    // OneUI Design Library - الطبقة العليا للمكونات المخصصة
     implementation 'io.github.oneuiproject:design:1.2.6'
-    
-    
-    // مكتبات Samsung
     implementation 'io.github.oneuiproject.sesl:indexscroll:1.0.3'
     implementation 'io.github.oneuiproject.sesl:picker-basic:1.2.0'
     implementation 'io.github.oneuiproject.sesl:apppickerview:1.0.0'
     implementation 'io.github.oneuiproject.sesl:customview:1.0.0'
-    
-    
-    // أيقونات OneUI
     implementation 'io.github.oneuiproject:icons:1.1.0'
     implementation 'com.airbnb.android:lottie:5.2.0'
-    
-
-    // مكتبات AndroidX المتوافقة - هذه لا تتعارض مع sesl
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    
-    // إضافة مكتبة لإدارة الملفات والأذونات (اختيارية لتحسين إدارة ملفات السجل)
     implementation 'androidx.documentfile:documentfile:1.0.1'
 }
