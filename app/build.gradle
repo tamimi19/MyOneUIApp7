@@ -51,7 +51,6 @@ android {
 configurations.all {
     exclude group: 'androidx.appcompat', module: 'appcompat'
     exclude group: 'androidx.core', module: 'core'
-    exclude group: 'com.google.android.material', module: 'material'
     exclude group: 'androidx.recyclerview', module: 'recyclerview'
     exclude group: 'androidx.coordinatorlayout', module: 'coordinatorlayout'
     exclude group: 'androidx.swiperefreshlayout', module: 'swiperefreshlayout'
