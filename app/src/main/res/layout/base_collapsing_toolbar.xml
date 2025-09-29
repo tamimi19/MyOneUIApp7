@@ -8,12 +8,10 @@
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/collapsing_toolbar"
-        style="@style/Widget.Design.CollapsingToolbar"
         android:layout_width="match_parent"
-        android:layout_height="152dp"
+        android:layout_height="200dp"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
-        app:extendedTitleEnabled="true"
-        app:toolbarId="@id/toolbar">
+        app:extendedTitleEnabled="true">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
