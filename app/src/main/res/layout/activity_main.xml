@@ -18,7 +18,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/sesl_list_subheader_height">
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp">
 
             <TextView
                 android:id="@+id/text_feature_1"
@@ -31,7 +34,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="?attr/isSeamless" />
+                android:background="?android:attr/listDivider" />
 
             <TextView
                 android:id="@+id/text_feature_2"
@@ -44,7 +47,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="?attr/isSeamless" />
+                android:background="?android:attr/listDivider" />
 
             <TextView
                 android:id="@+id/text_feature_3"
@@ -57,7 +60,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="?attr/isSeamless" />
+                android:background="?android:attr/listDivider" />
 
             <TextView
                 android:id="@+id/text_feature_4"
