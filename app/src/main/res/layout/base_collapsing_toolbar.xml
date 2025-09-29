@@ -5,19 +5,19 @@
     android:id="@+id/app_bar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fitsSystemWindows="true"> <!-- تم إضافة هذا -->
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/collapsing_toolbar"
-        style="@style/Widget.Design.CollapsingToolbar" <!-- ثيم One UI -->
+        style="@style/Widget.Design.CollapsingToolbar"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:fitsSystemWindows="true" <!-- تم إضافة هذا -->
-        app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways" <!-- تم تعديل Flags -->
-        app:expandedTitleGravity="bottom|center_horizontal" <!-- تم إضافة هذا -->
-        app:expandedTitleMarginBottom="16dp" <!-- تم إضافة هذا -->
-        app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Headline" <!-- شكل عنوان كبير -->
-        app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Title" <!-- شكل عنوان مصغر -->
+        android:fitsSystemWindows="true"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways"
+        app:expandedTitleGravity="bottom|center_horizontal"
+        app:expandedTitleMarginBottom="16dp"
+        app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Headline"
+        app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
         app:extendedTitleEnabled="true">
 
         <androidx.appcompat.widget.Toolbar
