@@ -18,7 +18,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import dev.oneuiproject.oneui.layout.DrawerLayout;
 import dev.oneuiproject.oneui.utils.internal.ToolbarLayoutUtils;
 import java.util.ArrayList;
-import java.util.List;
+import javautil.List
 
 
 public class MainActivity extends AppCompatActivity {
