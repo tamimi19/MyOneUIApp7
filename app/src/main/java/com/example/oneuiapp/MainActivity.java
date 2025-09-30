@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     mDrawerLayout.closeDrawerRight();
 } else {
     mDrawerLayout.openDrawerRight();
-}
+        }
             mDrawerLayout.setDrawerOpen(false, true);
         } else if (mEnableBackToHeader && mAppBarLayout.seslIsCollapsed()) {
             mAppBarLayout.setExpanded(true);
