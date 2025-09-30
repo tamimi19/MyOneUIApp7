@@ -1,14 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">تطبيق OneUI</string>
-    <string name="title_features">مميزات One UI</string>
-    <string name="feature1">يتم عرض المحتوى في أعلى الشاشة والتحكم في الأسفل لسهولة الوصول.</string>
-    <string name="feature2">تصميم بسيط يزيل التشويش لمساعدة المستخدم على التركيز على المهام.</string>
-    <string name="feature3">عناصر واجهة واضحة بزوايا مستديرة متسقة لتعزيز قابلية القراءة.</string>
-    <string name="feature4">يدعم الوضع الليلي (الوضع الداكن) لراحة العرض في الإضاءة المنخفضة.</string>
+    <!-- أضف هذه السطور إلى ملف strings.xml الموجود -->
+
+    <string name="app_subtitle">عنوانك الفرعي هنا</string>
+    <string name="nav_home">الشاشة الرئيسية</string>
+    <string name="nav_settings">الضبط</string>
+    
+    <string name="app_name">تطبيق One UI</string>
+    
+    <string name="title_features">الميزات</string>
     <string name="title_settings">الإعدادات</string>
-    <string name="settings_info">هذه صفحة إعدادات التطبيق (قيد التطوير).</string>
-    <string name="navigation_drawer_open">فتح القائمة</string>
-    <string name="navigation_drawer_close">إغلاق القائمة</string>
-    <string name="nav_home">القائمة الرئيسية</string>
-    <string name="nav_settings">الإعدادات</string>
+    
+    <string name="feature1">الميزة الأولى - يتم عرض والتحكم في المحتوى بسهولة</string>
+    <string name="feature2">الميزة الثانية - تصميم بسيط وسهل الاستخدام</string>
+    <string name="feature3">الميزة الثالثة - عناصر واجهة متسقة لتجربة أفضل</string>
+    <string name="feature4">الميزة الرابعة - يدعم الوضع الداكن لراحة العرض</string>
+    
+    <string name="settings_info">يمكنك التحكم في إعدادات التطبيق من هنا</string>
+    
+    <string name="navigation_drawer_open">فتح قائمة التنقل</string>
+    <string name="navigation_drawer_close">إغلاق قائمة التنقل</string>
+    
 </resources>
