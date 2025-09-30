@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <dev.oneuiproject.oneui.widget.Separator
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="الميزات الرئيسية" />
+
+        <dev.oneuiproject.oneui.widget.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/text_feature_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/feature1"
+                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:padding="16dp"
+                    android:background="?attr/selectableItemBackground" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/text_feature_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/feature2"
+                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:padding="16dp"
+                    android:background="?attr/selectableItemBackground" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/text_feature_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/feature3"
+                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:padding="16dp"
+                    android:background="?attr/selectableItemBackground" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/text_feature_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/feature4"
+                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:padding="16dp"
+                    android:background="?attr/selectableItemBackground" />
+
+            </LinearLayout>
+
+        </dev.oneuiproject.oneui.widget.RoundLinearLayout>
+
+        <dev.oneuiproject.oneui.widget.Separator
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="حول التطبيق" />
+
+        <dev.oneuiproject.oneui.widget.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="هذا تطبيق تجريبي لعرض تصميم One UI"
+                android:textAppearance="?android:attr/textAppearanceListItem"
+                android:padding="16dp" />
+
+        </dev.oneuiproject.oneui.widget.RoundLinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
