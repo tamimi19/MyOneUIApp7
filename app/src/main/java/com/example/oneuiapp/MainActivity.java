@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    
+
     private boolean mEnableBackToHeader;
     private DrawerLayout mDrawerLayout;
     private AppBarLayout mAppBarLayout;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private View mBottomContainer;
     private RecyclerView mDrawerListView;
     private DrawerListAdapter mDrawerAdapter;
-    
+
     private List<Fragment> mFragments = new ArrayList<>();
     private int mCurrentFragmentIndex = 0;
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setupToolbar();
         setupDrawer();
         setupAppBar(getResources().getConfiguration());
-        
+
         if (savedInstanceState == null) {
             showFragment(mCurrentFragmentIndex);
         }
@@ -65,29 +65,30 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        
+
         mDrawerLayout.setTitle(getString(R.string.app_name));
-        mDrawerLayout.setExpandedSubtitle(getString(R.string.app_subtitle));
+        mDrawerLayout.setExpandedSubtitle("تطبيق تجريبي بتصميم One UI");
     }
 
     private void setupDrawer() {
         initFragmentsList();
-        
+
         mDrawerListView.setLayoutManager(new LinearLayoutManager(this));
-        mDrawerListView.setAdapter(mDrawerAdapter = new DrawerListAdapter(
-            this, 
-            mFragments,
-            position -> {
-                if (position != mCurrentFragmentIndex) {
-                    mCurrentFragmentIndex = position;
-                    showFragment(position);
-                    mDrawerLayout.setDrawerOpen(false, true);
-                    return true;
-                }
-                return false;
-            }
-        ));
-        
+        mDrawerListView.setAdapter(
+                mDrawerAdapter =
+                        new DrawerListAdapter(
+                                this,
+                                mFragments,
+                                position -> {
+                                    if (position != mCurrentFragmentIndex) {
+                                        mCurrentFragmentIndex = position;
+                                        showFragment(position);
+                                        mDrawerLayout.setDrawerOpen(false, true);
+                                        return true;
+                                    }
+                                    return false;
+                                }));
+
         mDrawerAdapter.setSelectedItem(mCurrentFragmentIndex);
     }
 
@@ -99,21 +100,19 @@ public class MainActivity extends AppCompatActivity {
     private void showFragment(int position) {
         Fragment fragment = mFragments.get(position);
         FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction()
-            .replace(R.id.main_content, fragment)
-            .commit();
+        fm.beginTransaction().replace(R.id.main_content, fragment).commit();
     }
 
     private void setupAppBar(Configuration config) {
         ToolbarLayoutUtils.hideStatusBarForLandscape(this, config.orientation);
-        ToolbarLayoutUtils.updateListBothSideMargin(this, (ViewGroup) mBottomContainer);
+        ToolbarLayoutUtils.updateListBothSideMargin(this, mBottomContainer);
 
         if (config.orientation != Configuration.ORIENTATION_LANDSCAPE && !isInMultiWindowMode()) {
             mAppBarLayout.seslSetCustomHeightProportion(true, 0.5f);
             mEnableBackToHeader = true;
             mAppBarLayout.addOnOffsetChangedListener(new AppBarOffsetListener());
             mAppBarLayout.setExpanded(true, false);
-            
+
             if (mSwipeUpContainer != null) {
                 mSwipeUpContainer.setVisibility(View.VISIBLE);
                 ViewGroup.LayoutParams lp = mSwipeUpContainer.getLayoutParams();
@@ -140,11 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-            if (mDrawerLayout.isDrawerOpenRight()) {
-            mDrawerLayout.closeDrawerRight();
-        } else {
-            mDrawerLayout.openDrawerRight();
-        }
+        if (mDrawerLayout.isDrawerOpen()) {
             mDrawerLayout.setDrawerOpen(false, true);
         } else if (mEnableBackToHeader && mAppBarLayout.seslIsCollapsed()) {
             mAppBarLayout.setExpanded(true);
@@ -184,12 +179,13 @@ public class MainActivity extends AppCompatActivity {
             if (mBottomContainer != null) {
                 final float alphaRange = mCollapsingToolbar.getHeight() * 0.143f;
                 final float layoutPosition = Math.abs(appBarLayout.getTop());
-                float bottomAlpha = (150.0f / alphaRange) * 
-                    (layoutPosition - (mCollapsingToolbar.getHeight() * 0.35f));
-                
+                float bottomAlpha =
+                        (150.0f / alphaRange)
+                                * (layoutPosition - (mCollapsingToolbar.getHeight() * 0.35f));
+
                 bottomAlpha = Math.max(0, Math.min(255, bottomAlpha));
                 mBottomContainer.setAlpha(bottomAlpha / 255);
             }
         }
     }
-                    }
+            }
