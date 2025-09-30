@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
             if (mDrawerLayout.isDrawerOpenRight()) {
             mDrawerLayout.closeDrawerRight();
-    } else {
+        } else {
             mDrawerLayout.openDrawerRight();
         }
             mDrawerLayout.setDrawerOpen(false, true);
