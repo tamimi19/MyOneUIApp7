@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupAppBar(Configuration config) {
         ToolbarLayoutUtils.hideStatusBarForLandscape(this, config.orientation);
-        ToolbarLayoutUtils.updateListBothSideMargin(this, mBottomContainer);
+        ToolbarLayoutUtils.updateListBothSideMargin(this, (ViewGroup) mBottomContainer);
 
         if (config.orientation != Configuration.ORIENTATION_LANDSCAPE && !isInMultiWindowMode()) {
             mAppBarLayout.seslSetCustomHeightProportion(true, 0.5f);
