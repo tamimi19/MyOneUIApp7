@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private CollapsingToolbarLayout mCollapsingToolbar;
     private Toolbar mToolbar;
     private View mSwipeUpContainer;
-    private View mBottomContainer;
+    private ViewGroup mBottomContainer;
     private RecyclerView mDrawerListView;
     private DrawerListAdapter mDrawerAdapter;
 
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen()) {
+        if (mDrawerLayout.isDrawerOpen(true)) {
             mDrawerLayout.setDrawerOpen(false, true);
         } else if (mEnableBackToHeader && mAppBarLayout.seslIsCollapsed()) {
             mAppBarLayout.setExpanded(true);
@@ -188,4 +188,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-            }
+}
