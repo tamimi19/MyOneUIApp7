@@ -81,7 +81,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:5.2.0'
     
     // مكتبات Google
-    implementation 'androidx.annotation:annotation:1.9.1'
+    implementation 'androidx.annotation:annotation1.9.1
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'androidx.documentfile:documentfile:1.1.0'
 }
