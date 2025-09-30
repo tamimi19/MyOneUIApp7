@@ -104,7 +104,7 @@ spotless {
     format 'gradle', {
         target '**/*.gradle', '**/*.gradle.kts'
         trimTrailingWhitespace()
-        indentWithSpaces()
+        leadingTabsToSpaces()
         endWithNewline()
     }
 }
