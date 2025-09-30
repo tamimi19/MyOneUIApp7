@@ -36,6 +36,12 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
+      - name: Apply Spotless (auto-fix all formatters)
+        run: ./gradlew spotlessApply
+
+      - name: Show Spotless Report
+        run: ./gradlew spotlessCheck || true
+
       - name: Build APK with Gradle Wrapper
         env:
           JITPACK_TOKEN: ${{ secrets.JITPACK_TOKEN }}
