@@ -1,6 +1,6 @@
 plugins {
     id 'com.android.application'
-    id 'com.diffplug.spotless'
+    id 'com.diffplug.spotless' version '8.0.0'
 }
 
 android {
@@ -104,7 +104,7 @@ spotless {
     format 'gradle', {
         target '**/*.gradle', '**/*.gradle.kts'
         trimTrailingWhitespace()
-        leadingTabsToSpaces()
+        leadingTabsToSpaces() // استخدمنا الخيار الصحيح هنا
         endWithNewline()
     }
 }
