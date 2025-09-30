@@ -40,10 +40,10 @@ public class DrawerListAdapter extends RecyclerView.Adapter<DrawerListViewHolder
         
         if (fragment instanceof HomeFragment) {
             holder.setIcon(R.drawable.ic_oui_home_outline);
-            holder.setTitle("الرئيسية");
+            holder.setTitle("Home");
         } else if (fragment instanceof SettingsFragment) {
             holder.setIcon(R.drawable.ic_oui_settings_outline);
-            holder.setTitle("الإعدادات");
+            holder.setTitle("Settings");
         }
         
         holder.setSelected(position == mSelectedPos);
