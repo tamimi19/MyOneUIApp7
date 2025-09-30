@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-          if (mDrawerLayout.isDrawerOpenRight()) {
+            if (mDrawerLayout.isDrawerOpenRight()) {
             mDrawerLayout.closeDrawerRight();
     } else {
             mDrawerLayout.openDrawerRight();
