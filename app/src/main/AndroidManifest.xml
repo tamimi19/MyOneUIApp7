@@ -31,6 +31,10 @@
             </intent-filter>
         </activity>
 
+        <!-- يمكنك حذف هذه الـ Activities إذا كنت ستستخدم Fragments بدلاً منها -->
+        <!-- أو الاحتفاظ بها إذا كنت ستستخدمها في المستقبل -->
+        
+        <!--
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
@@ -52,6 +56,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        -->
 
     </application>
 
