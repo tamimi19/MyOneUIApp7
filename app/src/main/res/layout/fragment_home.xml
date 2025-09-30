@@ -13,7 +13,7 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="الميزات الرئيسية" />
+            android:text="Main Features" />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -90,7 +90,7 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="حول التطبيق" />
+            android:text="About" />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -101,7 +101,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="هذا تطبيق تجريبي لعرض تصميم One UI"
+                android:text="This is a demo app to showcase the One UI design."
                 android:textAppearance="?android:attr/textAppearanceListItem"
                 android:padding="16dp" />
 
