@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- أضف هذه السطور إلى ملف strings.xml الموجود -->
+
+    <string name="app_subtitle">عنوانك الفرعي هنا</string>
+    <string name="nav_home">الشاشة الرئيسية</string>
+    <string name="nav_settings">الضبط</string>
     
     <string name="app_name">تطبيق One UI</string>
     
