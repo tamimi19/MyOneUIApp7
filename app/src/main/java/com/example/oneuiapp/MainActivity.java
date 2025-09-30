@@ -140,7 +140,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen()) {
+        if (mDrawerLayout.isDrawerOpenRight()) {
+    mDrawerLayout.closeDrawerRight();
+} else {
+    mDrawerLayout.openDrawerRight();
+}
             mDrawerLayout.setDrawerOpen(false, true);
         } else if (mEnableBackToHeader && mAppBarLayout.seslIsCollapsed()) {
             mAppBarLayout.setExpanded(true);
@@ -188,4 +192,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-}
+                    }
