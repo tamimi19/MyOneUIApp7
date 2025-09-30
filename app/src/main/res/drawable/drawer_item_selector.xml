@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- حاله محدد/selected -->
     <item android:state_selected="true">
         <shape android:shape="rectangle">
             <corners android:radius="8dp" />
-            <solid android:color="@color/oneui_selected_background" />
+            <solid android:color="?attr/colorControlHighlight" />
         </shape>
     </item>
-
-    <!-- الحالة العادية -->
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="8dp" />
