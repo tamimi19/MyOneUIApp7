@@ -43,10 +43,10 @@ public class DrawerListAdapter extends RecyclerView.Adapter<DrawerListViewHolder
 
         int iconRes = 0;
         if (fragment instanceof HomeFragment) {
-            iconRes = getOneUiIconId("ic_oui_home_outline");
+            iconRes = getOneUiIconId("ic_oui_home");
             holder.setTitle("Home");
         } else if (fragment instanceof SettingsFragment) {
-            iconRes = getOneUiIconId("ic_oui_settings_outline");
+            iconRes = getOneUiIconId("ic_oui_settings");
             holder.setTitle("Settings");
         }
 
