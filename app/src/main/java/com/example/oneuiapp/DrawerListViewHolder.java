@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DrawerListViewHolder extends RecyclerView.ViewHolder {
-    
+
     private Typeface mNormalTypeface;
     private Typeface mSelectedTypeface;
     private AppCompatImageView mIconView;
@@ -34,6 +34,10 @@ public class DrawerListViewHolder extends RecyclerView.ViewHolder {
 
     public void setSelected(boolean selected) {
         itemView.setSelected(selected);
+        View container = itemView.findViewById(R.id.drawer_item_container);
+        if (container != null) {
+            container.setSelected(selected);
+        }
         mTitleView.setTypeface(selected ? mSelectedTypeface : mNormalTypeface);
         mTitleView.setEllipsize(selected ? TextUtils.TruncateAt.MARQUEE : TextUtils.TruncateAt.END);
     }
