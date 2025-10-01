@@ -26,14 +26,15 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <!-- Feature 1 (title) -->
+                <!-- Feature 1 (title - large, white, heavier font) -->
                 <TextView
                     android:id="@+id/text_feature_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature1"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-black"
                     android:textStyle="bold"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
@@ -46,14 +47,15 @@
                     android:layout_marginEnd="16dp"
                     android:background="?android:attr/listDivider" />
 
-                <!-- Feature 2 -->
+                <!-- Feature 2 (title) -->
                 <TextView
                     android:id="@+id/text_feature_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature2"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-black"
                     android:textStyle="bold"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
@@ -66,14 +68,15 @@
                     android:layout_marginEnd="16dp"
                     android:background="?android:attr/listDivider" />
 
-                <!-- Feature 3 -->
+                <!-- Feature 3 (title) -->
                 <TextView
                     android:id="@+id/text_feature_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature3"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-black"
                     android:textStyle="bold"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
@@ -86,14 +89,15 @@
                     android:layout_marginEnd="16dp"
                     android:background="?android:attr/listDivider" />
 
-                <!-- Feature 4 -->
+                <!-- Feature 4 (title) -->
                 <TextView
                     android:id="@+id/text_feature_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature4"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-black"
                     android:textStyle="bold"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
@@ -114,7 +118,7 @@
             android:orientation="vertical"
             android:layout_marginBottom="20dp">
 
-            <!-- About text should be smaller and use secondary color -->
+            <!-- About text: smaller and darker -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
