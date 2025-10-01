@@ -31,7 +31,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature1"
-                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:padding="16dp"
                     android:background="?attr/selectableItemBackground" />
 
@@ -47,7 +48,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature2"
-                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:padding="16dp"
                     android:background="?attr/selectableItemBackground" />
 
@@ -63,7 +65,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature3"
-                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:padding="16dp"
                     android:background="?attr/selectableItemBackground" />
 
@@ -79,7 +82,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature4"
-                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:padding="16dp"
                     android:background="?attr/selectableItemBackground" />
 
@@ -102,7 +106,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="This is a demo app to showcase the One UI design."
-                android:textAppearance="?android:attr/textAppearanceListItem"
+                android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                android:textColor="?android:attr/textColorSecondary"
                 android:padding="16dp" />
 
         </dev.oneuiproject.oneui.widget.RoundLinearLayout>
