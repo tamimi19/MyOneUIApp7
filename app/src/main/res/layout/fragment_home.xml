@@ -13,9 +13,7 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Main Features"
-            android:textAppearance="?attr/textAppearanceSubtitle1"
-            android:textColor="?attr/textColorPrimary" />
+            android:text="Main Features" />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -28,15 +26,17 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+                <!-- Feature 1 (title + optional subtitle) -->
                 <TextView
                     android:id="@+id/text_feature_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature1"
-                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
                     android:textColor="?attr/textColorPrimary"
-                    android:textSize="16sp"
-                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:background="?attr/selectableItemBackground" />
 
                 <View
@@ -46,15 +46,17 @@
                     android:layout_marginEnd="16dp"
                     android:background="?android:attr/listDivider" />
 
+                <!-- Feature 2 -->
                 <TextView
                     android:id="@+id/text_feature_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature2"
-                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
                     android:textColor="?attr/textColorPrimary"
-                    android:textSize="16sp"
-                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:background="?attr/selectableItemBackground" />
 
                 <View
@@ -64,15 +66,17 @@
                     android:layout_marginEnd="16dp"
                     android:background="?android:attr/listDivider" />
 
+                <!-- Feature 3 -->
                 <TextView
                     android:id="@+id/text_feature_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature3"
-                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
                     android:textColor="?attr/textColorPrimary"
-                    android:textSize="16sp"
-                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:background="?attr/selectableItemBackground" />
 
                 <View
@@ -82,15 +86,17 @@
                     android:layout_marginEnd="16dp"
                     android:background="?android:attr/listDivider" />
 
+                <!-- Feature 4 -->
                 <TextView
                     android:id="@+id/text_feature_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature4"
-                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
                     android:textColor="?attr/textColorPrimary"
-                    android:textSize="16sp"
-                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:background="?attr/selectableItemBackground" />
 
             </LinearLayout>
@@ -100,9 +106,7 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="About"
-            android:textAppearance="?attr/textAppearanceSubtitle1"
-            android:textColor="?attr/textColorPrimary" />
+            android:text="About" />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -110,11 +114,12 @@
             android:orientation="vertical"
             android:layout_marginBottom="20dp">
 
+            <!-- About text should be smaller and use secondary color -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="This is a demo app to showcase the One UI design."
-                android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?attr/textColorSecondary"
                 android:textSize="14sp"
                 android:padding="16dp" />
