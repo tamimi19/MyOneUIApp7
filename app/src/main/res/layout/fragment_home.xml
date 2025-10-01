@@ -13,7 +13,9 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Main Features" />
+            android:text="Main Features"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="?attr/textColorPrimary" />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -31,8 +33,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature1"
-                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
-                    android:textColor="?android:attr/textColorSecondary"
+                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textColor="?attr/textColorPrimary"
+                    android:textSize="16sp"
                     android:padding="16dp"
                     android:background="?attr/selectableItemBackground" />
 
@@ -48,8 +51,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature2"
-                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
-                    android:textColor="?android:attr/textColorSecondary"
+                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textColor="?attr/textColorPrimary"
+                    android:textSize="16sp"
                     android:padding="16dp"
                     android:background="?attr/selectableItemBackground" />
 
@@ -65,8 +69,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature3"
-                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
-                    android:textColor="?android:attr/textColorSecondary"
+                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textColor="?attr/textColorPrimary"
+                    android:textSize="16sp"
                     android:padding="16dp"
                     android:background="?attr/selectableItemBackground" />
 
@@ -82,8 +87,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature4"
-                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
-                    android:textColor="?android:attr/textColorSecondary"
+                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textColor="?attr/textColorPrimary"
+                    android:textSize="16sp"
                     android:padding="16dp"
                     android:background="?attr/selectableItemBackground" />
 
@@ -94,7 +100,9 @@
         <dev.oneuiproject.oneui.widget.Separator
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="About" />
+            android:text="About"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="?attr/textColorPrimary" />
 
         <dev.oneuiproject.oneui.widget.RoundLinearLayout
             android:layout_width="match_parent"
@@ -107,7 +115,8 @@
                 android:layout_height="wrap_content"
                 android:text="This is a demo app to showcase the One UI design."
                 android:textAppearance="?android:attr/textAppearanceListItemSecondary"
-                android:textColor="?android:attr/textColorSecondary"
+                android:textColor="?attr/textColorSecondary"
+                android:textSize="14sp"
                 android:padding="16dp" />
 
         </dev.oneuiproject.oneui.widget.RoundLinearLayout>
