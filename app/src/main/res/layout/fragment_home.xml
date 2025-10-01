@@ -26,15 +26,15 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <!-- Feature 1 (title + optional subtitle) -->
+                <!-- Feature 1 (title) -->
                 <TextView
                     android:id="@+id/text_feature_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature1"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textColor="?attr/textColorPrimary"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:background="?attr/selectableItemBackground" />
@@ -52,9 +52,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature2"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textColor="?attr/textColorPrimary"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:background="?attr/selectableItemBackground" />
@@ -72,9 +72,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature3"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textColor="?attr/textColorPrimary"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:background="?attr/selectableItemBackground" />
@@ -92,9 +92,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature4"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textColor="?attr/textColorPrimary"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:background="?attr/selectableItemBackground" />
@@ -119,8 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="This is a demo app to showcase the One UI design."
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?attr/textColorSecondary"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="14sp"
                 android:padding="16dp" />
 
