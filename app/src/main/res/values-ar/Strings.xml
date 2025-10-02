@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- أضف هذه السطور إلى ملف strings.xml الموجود -->
-
-    <string name="app_subtitle">عنوانك الفرعي هنا</string>
-    <string name="nav_home">الشاشة الرئيسية</string>
-    <string name="nav_settings">الضبط</string>
-    
     <string name="app_name">تطبيق One UI</string>
+    <string name="app_subtitle">تطبيق تجريبي بتصميم One UI</string>
     
-    <string name="title_features">الميزات</string>
+    <string name="title_features">الميزات الرئيسية</string>
+    <string name="title_about">حول التطبيق</string>
     <string name="title_settings">الإعدادات</string>
     
     <string name="feature1">الميزة الأولى - يتم عرض والتحكم في المحتوى بسهولة</string>
@@ -16,9 +12,13 @@
     <string name="feature3">الميزة الثالثة - عناصر واجهة متسقة لتجربة أفضل</string>
     <string name="feature4">الميزة الرابعة - يدعم الوضع الداكن لراحة العرض</string>
     
+    <string name="about_text">تطبيق تجريبي لعرض تصميم One UI</string>
+    
+    <string name="drawer_home">الرئيسية</string>
+    <string name="drawer_settings">الإعدادات</string>
+    
     <string name="settings_info">يمكنك التحكم في إعدادات التطبيق من هنا</string>
     
     <string name="navigation_drawer_open">فتح قائمة التنقل</string>
     <string name="navigation_drawer_close">إغلاق قائمة التنقل</string>
-    
 </resources>
