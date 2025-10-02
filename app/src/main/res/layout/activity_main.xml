@@ -143,7 +143,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:paddingTop="55dp"
+        android:paddingTop="60dp"
         android:clipToPadding="false"
         app:layout_location="drawer_panel" />
 
