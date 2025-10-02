@@ -8,10 +8,10 @@
     <string name="title_settings">الإعدادات</string>
     <string name="swipe_up">اسحب للأعلى</string>
     
-    <string name="feature1">يتم عرض والتحكم في المحتوى بسهولة •</string>
-    <string name="feature2">تصميم بسيط وسهل الاستخدام •</string>
-    <string name="feature3">عناصر واجهة متسقة لتجربة أفضل •</string>
-    <string name="feature4">يدعم الوضع الداكن لراحة العرض •</string>
+    <string name="feature1">يتم عرض والتحكم في المحتوى بسهولة</string>
+    <string name="feature2">تصميم بسيط وسهل الاستخدام</string>
+    <string name="feature3">عناصر واجهة متسقة لتجربة أفضل</string>
+    <string name="feature4">يدعم الوضع الداكن لراحة العرض</string>
     
     <string name="about_text">تطبيق تجريبي لعرض تصميم One UI</string>
     
