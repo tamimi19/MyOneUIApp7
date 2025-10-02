@@ -13,7 +13,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 public class DrawerListAdapter extends RecyclerView.Adapter<DrawerListViewHolder> {
-    
+
     private Context mContext;
     private List<Fragment> mFragments;
     private DrawerListener mListener;
@@ -23,7 +23,8 @@ public class DrawerListAdapter extends RecyclerView.Adapter<DrawerListViewHolder
         boolean onDrawerItemSelected(int position);
     }
 
-    public DrawerListAdapter(@NonNull Context context, List<Fragment> fragments, DrawerListener listener) {
+    public DrawerListAdapter(
+            @NonNull Context context, List<Fragment> fragments, DrawerListener listener) {
         mContext = context;
         mFragments = fragments;
         mListener = listener;
@@ -44,10 +45,10 @@ public class DrawerListAdapter extends RecyclerView.Adapter<DrawerListViewHolder
         int iconRes = 0;
         if (fragment instanceof HomeFragment) {
             iconRes = getOneUiIconId("ic_oui_home");
-            holder.setTitle("Home");
+            holder.setTitle(mContext.getString(R.string.drawer_home));
         } else if (fragment instanceof SettingsFragment) {
             iconRes = getOneUiIconId("ic_oui_settings");
-            holder.setTitle("Settings");
+            holder.setTitle(mContext.getString(R.string.drawer_settings));
         }
 
         if (iconRes != 0) {
@@ -57,12 +58,13 @@ public class DrawerListAdapter extends RecyclerView.Adapter<DrawerListViewHolder
         }
 
         holder.setSelected(position == mSelectedPos);
-        holder.itemView.setOnClickListener(v -> {
-            final int itemPos = holder.getBindingAdapterPosition();
-            if (mListener != null && mListener.onDrawerItemSelected(itemPos)) {
-                setSelectedItem(itemPos);
-            }
-        });
+        holder.itemView.setOnClickListener(
+                v -> {
+                    final int itemPos = holder.getBindingAdapterPosition();
+                    if (mListener != null && mListener.onDrawerItemSelected(itemPos)) {
+                        setSelectedItem(itemPos);
+                    }
+                });
     }
 
     @Override
@@ -75,7 +77,6 @@ public class DrawerListAdapter extends RecyclerView.Adapter<DrawerListViewHolder
         notifyItemRangeChanged(0, getItemCount());
     }
 
-    // مساعد لجلب الأيقونة من مكتبة oneui
     private int getOneUiIconId(String name) {
         try {
             Class<?> r = Class.forName("dev.oneuiproject.oneui.R$drawable");
