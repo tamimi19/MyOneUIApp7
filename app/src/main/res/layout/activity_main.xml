@@ -37,7 +37,6 @@
                     android:layout_marginTop="?attr/actionBarSize"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:paddingTop="32dp"
                     app:isCustomTitle="true">
 
                     <androidx.appcompat.widget.AppCompatImageView
