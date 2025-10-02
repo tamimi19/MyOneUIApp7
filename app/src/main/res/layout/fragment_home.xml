@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="الميزات الرئيسية"
+            android:text="@string/title_features"
             android:textSize="20sp"
             android:textColor="?android:attr/textColorPrimary"
             android:fontFamily="sans-serif-medium"
@@ -94,7 +94,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="حول التطبيق"
+            android:text="@string/title_about"
             android:textSize="20sp"
             android:textColor="?android:attr/textColorPrimary"
             android:fontFamily="sans-serif-medium"
@@ -110,7 +110,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="تطبيق تجريبي لعرض تصميم One UI"
+                android:text="@string/about_text"
                 android:textSize="14sp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif"
