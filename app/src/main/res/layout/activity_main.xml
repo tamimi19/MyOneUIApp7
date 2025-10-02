@@ -93,6 +93,7 @@
 
         </LinearLayout>
 
+        <!-- swipe up container: السهم في سطر منفصل والنص يتبع strings.xml -->
         <FrameLayout
             android:id="@+id/swipe_up_container"
             android:layout_width="match_parent"
@@ -101,17 +102,37 @@
             android:focusable="false"
             android:visibility="gone">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_marginBottom="64dp"
-                android:text="⬆\nاسحب للأعلى"
-                android:textAlignment="center"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="16sp"
-                android:alpha="0.6" />
+                android:paddingBottom="64dp">
 
+                <!-- السهم في سطر منفصل ومركّز -->
+                <TextView
+                    android:id="@+id/swipe_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⬆"
+                    android:textSize="28sp"
+                    android:textAlignment="center"
+                    android:alpha="0.8" />
+
+                <!-- النص في السطر التالي: استخدم مورد السلسلة ليتبع لغة النظام -->
+                <TextView
+                    android:id="@+id/swipe_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/swipe_up"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:alpha="0.6"
+                    android:textDirection="locale"/>
+
+            </LinearLayout>
         </FrameLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
