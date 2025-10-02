@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,15 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import dev.oneuiproject.oneui.layout.DrawerLayout;
 import dev.oneuiproject.oneui.utils.internal.ToolbarLayoutUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,14 +67,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mDrawerLayout.setTitle(getString(R.string.app_name));
-        mDrawerLayout.setExpandedSubtitle("تطبيق تجريبي بتصميم One UI");
+        mDrawerLayout.setExpandedSubtitle(getString(R.string.app_subtitle));
     }
 
     private void setupDrawer() {
         initFragmentsList();
-
-        // لا ننشئ DrawerLayout.DrawerListener لأن الـ inner class داخل المكتبة غير متاح خارجياً.
-        // المكتبة تتعامل مع back press داخلياً، ويمكننا استخدام API العامة فقط.
 
         mDrawerListView.setLayoutManager(new LinearLayoutManager(this));
         mDrawerListView.setAdapter(
@@ -90,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
                                     if (position != mCurrentFragmentIndex) {
                                         mCurrentFragmentIndex = position;
                                         showFragment(position);
-                                        // أغلق الـ drawer عبر API الخاص بـ One UI
                                         mDrawerLayout.setDrawerOpen(false, true);
                                         return true;
                                     }
@@ -147,12 +139,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // اترك إغلاق الـ drawer لمكتبة One UI (تسجل callback على OnBackPressedDispatcher داخلياً).
-        // هنا فقط نتعامل مع مشكلة O كما في المثال الرسمي.
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O && isTaskRoot()) {
-            finishAfterTransition();
+        if (mDrawerLayout.isDrawerOpen(true)) {
+            mDrawerLayout.setDrawerOpen(false, true);
+        } else if (mEnableBackToHeader && mAppBarLayout.seslIsCollapsed()) {
+            mAppBarLayout.setExpanded(true);
         } else {
-            super.onBackPressed();
+            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O && isTaskRoot()) {
+                finishAfterTransition();
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -192,4 +188,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-        }
+}
