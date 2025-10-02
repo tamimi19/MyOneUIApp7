@@ -3,7 +3,6 @@ package com.example.oneuiapp;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -47,10 +46,6 @@ public class MainActivity extends AppCompatActivity {
         initViews();
         setupToolbar();
         setupDrawer();
-
-        // طبق padding للقائمة بعد تهيئة الـ toolbar و الـ drawer (مطابق للـ sample-app)
-        applyDrawerTopPadding();
-
         setupAppBar(getResources().getConfiguration());
 
         if (savedInstanceState == null) {
@@ -149,9 +144,6 @@ public class MainActivity extends AppCompatActivity {
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         setupAppBar(newConfig);
-
-        // أعد تطبيق padding بعد تغيير التكوين (مثلاً تغيير الاتجاه)
-        applyDrawerTopPadding();
     }
 
     @Override
@@ -168,34 +160,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean isInMultiWindowMode() {
         return Build.VERSION.SDK_INT >= 24 && super.isInMultiWindowMode();
-    }
-
-    /**
-     * يطبّق padding علوي للقائمة مساويًا لارتفاع الـ Toolbar.
-     * يستخدم post() لضمان أن ارتفاع الـ toolbar قد تم قياسه.
-     * يتضمن fallback إلى ?attr/actionBarSize إن لم يُقاس الارتفاع بعد.
-     */
-    private void applyDrawerTopPadding() {
-        if (mToolbar == null || mDrawerListView == null) return;
-
-        mToolbar.post(() -> {
-            int top = mToolbar.getHeight();
-            if (top <= 0) {
-                top = getActionBarSize();
-            }
-            if (top > 0) {
-                mDrawerListView.setPadding(0, top, 0, 0);
-                mDrawerListView.setClipToPadding(false);
-            }
-        });
-    }
-
-    private int getActionBarSize() {
-        TypedValue tv = new TypedValue();
-        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-            return TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
-        }
-        return 0;
     }
 
     private class AppBarOffsetListener implements AppBarLayout.OnOffsetChangedListener {
@@ -229,4 +193,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-            }
+}
