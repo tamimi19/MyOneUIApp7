@@ -93,7 +93,7 @@
 
         </LinearLayout>
 
-        <!-- swipe up container: السهم في سطر منفصل والنص يتبع strings.xml -->
+        <!-- swipe up container -->
         <FrameLayout
             android:id="@+id/swipe_up_container"
             android:layout_width="match_parent"
@@ -110,7 +110,6 @@
                 android:layout_gravity="center"
                 android:paddingBottom="64dp">
 
-                <!-- السهم في سطر منفصل ومركّز -->
                 <TextView
                     android:id="@+id/swipe_arrow"
                     android:layout_width="wrap_content"
@@ -120,7 +119,6 @@
                     android:textAlignment="center"
                     android:alpha="0.8" />
 
-                <!-- النص في السطر التالي: استخدم مورد السلسلة ليتبع لغة النظام -->
                 <TextView
                     android:id="@+id/swipe_text"
                     android:layout_width="wrap_content"
@@ -137,11 +135,13 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <!-- درج التنقل -->
+    <!-- درج التنقل مع padding وfitsSystemWindows -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/drawer_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:paddingTop="?attr/actionBarSize"
         android:scrollbars="vertical"
         app:layout_location="drawer_panel" />
 
