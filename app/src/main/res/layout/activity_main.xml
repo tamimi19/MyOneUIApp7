@@ -5,6 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     app:expanded="false">
 
     <!-- المحتوى الرئيسي -->
@@ -137,11 +138,13 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <!-- درج التنقل -->
+    <!-- درج التنقل (بدون spacer) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/drawer_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true"
         android:scrollbars="vertical"
         app:layout_location="drawer_panel" />
 
