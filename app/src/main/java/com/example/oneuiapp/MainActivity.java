@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mDrawerLayout.setTitle(getString(R.string.app_name));
-        mDrawerLayout.setExpandedSubtitle("تطبيق تجريبي بتصميم One UI");
+        // استخدم النص من strings.xml (يتبع لغة النظام)
+        mDrawerLayout.setExpandedSubtitle(getString(R.string.app_subtitle));
     }
 
     private void setupDrawer() {
@@ -192,4 +193,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-}
+                    }
