@@ -112,14 +112,16 @@
                 android:paddingBottom="64dp">
 
                 <!-- السهم في سطر منفصل ومركّز -->
-                <TextView
-                    android:id="@+id/swipe_arrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="⬆"
-                    android:textSize="28sp"
-                    android:textAlignment="center"
-                    android:alpha="0.8" />
+                <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="100dp"
+            android:paddingHorizontal="70dp"
+            app:lottie_rawRes="@raw/lottie_swipe_up_anim"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_colorFilter="?android:attr/textColorPrimary" />
+
 
                 <!-- النص في السطر التالي: استخدم مورد السلسلة ليتبع لغة النظام -->
                 <TextView
