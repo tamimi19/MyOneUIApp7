@@ -31,6 +31,7 @@
                 app:expandedTitleMarginBottom="48dp">
 
                 <LinearLayout
+                    android:id="@+id/header_big_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="?attr/actionBarSize"
@@ -42,7 +43,6 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/header_app_icon"
                         android:layout_width="72dp"
-                        android:visibility="visible"
                         android:layout_height="72dp"
                         android:src="@mipmap/ic_launcher"
                         android:antialias="true" />
