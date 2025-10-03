@@ -114,19 +114,24 @@ public class MainActivity extends AppCompatActivity {
         // إخفاء/إظهار عناصر الرأس الكبيرة والسهم عند عرض شاشة الإعدادات
         View headerBig = findViewById(R.id.header_big_container);
         View swipeUp = findViewById(R.id.swipe_up_container);
+        View headerIcon = findViewById(R.id.header_app_icon);
+        View collapsing = findViewById(R.id.collapsing_toolbar);
+        View toolbarFixed = findViewById(R.id.toolbar_fixed);
+
         if (fragment instanceof SettingsFragment) {
             if (headerBig != null) headerBig.setVisibility(View.GONE);
             if (swipeUp != null) swipeUp.setVisibility(View.GONE);
+            if (headerIcon != null) headerIcon.setVisibility(View.GONE);
+            // إخفاء الـ CollapsingToolbar (الثانوي) في الإعدادات
+            if (collapsing != null) collapsing.setVisibility(View.GONE);
+            // إظهار Toolbar ثابت علوي بديل حتى يبقى شريط الأدوات ظاهرًا
+            if (toolbarFixed != null) toolbarFixed.setVisibility(View.VISIBLE);
         } else {
             if (headerBig != null) headerBig.setVisibility(View.VISIBLE);
             if (swipeUp != null) swipeUp.setVisibility(View.VISIBLE);
-        }
-
-        // أيضاً إخفاء أيقونة الرأس في درج التنقل عند شاشة الإعدادات (إن وُجد)
-        View headerIcon = findViewById(R.id.header_app_icon);
-        if (headerIcon != null) {
-            if (fragment instanceof SettingsFragment) headerIcon.setVisibility(View.GONE);
-            else headerIcon.setVisibility(View.VISIBLE);
+            if (headerIcon != null) headerIcon.setVisibility(View.VISIBLE);
+            if (collapsing != null) collapsing.setVisibility(View.VISIBLE);
+            if (toolbarFixed != null) toolbarFixed.setVisibility(View.GONE);
         }
     }
 
