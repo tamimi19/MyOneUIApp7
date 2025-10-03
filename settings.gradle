@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "OneUIApp"
-include ':app'
+include ':app', ':oneui-lib'
