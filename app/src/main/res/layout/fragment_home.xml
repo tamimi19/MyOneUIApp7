@@ -39,14 +39,9 @@
                     android:fontFamily="sans-serif"
                     android:padding="16dp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="?android:attr/listDivider" />
 
                 <TextView
+                    android:layout_marginBottom="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature2"
@@ -55,14 +50,9 @@
                     android:fontFamily="sans-serif"
                     android:padding="16dp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="?android:attr/listDivider" />
 
                 <TextView
+                    android:layout_marginBottom="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature3"
@@ -71,14 +61,9 @@
                     android:fontFamily="sans-serif"
                     android:padding="16dp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="?android:attr/listDivider" />
 
                 <TextView
+                    android:layout_marginBottom="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/feature4"
