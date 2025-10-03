@@ -110,6 +110,12 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = mFragments.get(position);
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.main_content, fragment).commit();
+        // إخفاء/إظهار أيقونة التطبيق في رأس الـ Drawer عندما نعرض شاشة الإعدادات
+        View headerIcon = findViewById(R.id.header_app_icon);
+        if (headerIcon != null) {
+            if (fragment instanceof SettingsFragment) headerIcon.setVisibility(View.GONE);
+            else headerIcon.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setupAppBar(Configuration config) {
