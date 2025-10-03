@@ -22,4 +22,19 @@
     
     <string name="navigation_drawer_open">فتح قائمة التنقل</string>
     <string name="navigation_drawer_close">إغلاق قائمة التنقل</string>
+    
+    <string name="settings_appearance">المظهر</string>
+    <string name="settings_language">اللغة</string>
+    <string name="settings_language_system">افتراضي النظام</string>
+    <string name="settings_language_arabic">العربية</string>
+    <string name="settings_language_english">الإنجليزية</string>
+    
+    <string name="settings_theme">السمة</string>
+    <string name="settings_theme_system">افتراضي النظام</string>
+    <string name="settings_theme_light">فاتح</string>
+    <string name="settings_theme_dark">داكن</string>
+    
+    <string name="settings_notifications_section">الإشعارات</string>
+    <string name="settings_notifications">الإشعارات</string>
+    <string name="settings_notifications_placeholder">ميزة الإشعارات قريباً</string>
 </resources>
