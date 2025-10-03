@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace "dev.oneuiproject.oneui"
+    namespace "com.oneuiproject.design"
 
     compileSdk 34
 
