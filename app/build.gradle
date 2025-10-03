@@ -74,7 +74,7 @@ dependencies {
     implementation 'io.github.oneuiproject.sesl:customview:1.0.0'
 
     // مكتبة OneUI Design
-    implementation project(path: ':oneui-lib')
+    implementation 'io.github.oneuiproject:design:1.2.6'
 
     // مكتبة الايقونات
     implementation 'io.github.oneuiproject:icons:1.1.0'
