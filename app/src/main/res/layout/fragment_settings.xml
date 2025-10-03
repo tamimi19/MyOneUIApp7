@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/title_settings"
-            android:textSize="23sp"
+            android:textSize="22sp"
             android:textColor="?android:attr/textColorPrimary"
             android:fontFamily="sans-serif-medium"
             android:layout_marginTop="16dp"
@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_info"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif"
                 android:padding="16dp" />
