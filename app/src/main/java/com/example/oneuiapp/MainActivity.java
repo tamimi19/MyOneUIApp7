@@ -110,7 +110,19 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = mFragments.get(position);
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.main_content, fragment).commit();
-        // إخفاء/إظهار أيقونة التطبيق في رأس الـ Drawer عندما نعرض شاشة الإعدادات
+
+        // إخفاء/إظهار عناصر الرأس الكبيرة والسهم عند عرض شاشة الإعدادات
+        View headerBig = findViewById(R.id.header_big_container);
+        View swipeUp = findViewById(R.id.swipe_up_container);
+        if (fragment instanceof SettingsFragment) {
+            if (headerBig != null) headerBig.setVisibility(View.GONE);
+            if (swipeUp != null) swipeUp.setVisibility(View.GONE);
+        } else {
+            if (headerBig != null) headerBig.setVisibility(View.VISIBLE);
+            if (swipeUp != null) swipeUp.setVisibility(View.VISIBLE);
+        }
+
+        // أيضاً إخفاء أيقونة الرأس في درج التنقل عند شاشة الإعدادات (إن وُجد)
         View headerIcon = findViewById(R.id.header_app_icon);
         if (headerIcon != null) {
             if (fragment instanceof SettingsFragment) headerIcon.setVisibility(View.GONE);
