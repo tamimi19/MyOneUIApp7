@@ -105,6 +105,31 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = mFragments.get(position);
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.main_content, fragment).commit();
+        
+        if (fragment instanceof SettingsFragment) {
+            mCollapsingToolbar.setTitle(getString(R.string.title_settings));
+            mAppBarLayout.setExpanded(false, false);
+            mAppBarLayout.seslSetCustomHeightProportion(false, 0);
+            if (mSwipeUpContainer != null) {
+                mSwipeUpContainer.setVisibility(View.GONE);
+            }
+            if (mBottomContainer != null) {
+                mBottomContainer.setVisibility(View.GONE);
+            }
+        } else {
+            mCollapsingToolbar.setTitle("");
+            if (mBottomContainer != null) {
+                mBottomContainer.setVisibility(View.VISIBLE);
+            }
+            Configuration config = getResources().getConfiguration();
+            if (config.orientation != Configuration.ORIENTATION_LANDSCAPE && !isInMultiWindowMode()) {
+                mAppBarLayout.seslSetCustomHeightProportion(true, 0.5f);
+                mAppBarLayout.setExpanded(true, false);
+                if (mSwipeUpContainer != null) {
+                    mSwipeUpContainer.setVisibility(View.VISIBLE);
+                }
+            }
+        }
     }
 
     private void setupAppBar(Configuration config) {
