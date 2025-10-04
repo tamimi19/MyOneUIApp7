@@ -57,16 +57,16 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        hideAppBar();
+        hideMainAppBar();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        showAppBar();
+        showMainAppBar();
     }
 
-    private void hideAppBar() {
+    private void hideMainAppBar() {
         if (getActivity() != null) {
             AppBarLayout appBar = getActivity().findViewById(R.id.app_bar);
             if (appBar != null) {
@@ -76,7 +76,7 @@ public class SettingsFragment extends Fragment {
         }
     }
 
-    private void showAppBar() {
+    private void showMainAppBar() {
         if (getActivity() != null) {
             AppBarLayout appBar = getActivity().findViewById(R.id.app_bar);
             if (appBar != null) {
