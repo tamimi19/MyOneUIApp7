@@ -1,6 +1,7 @@
 package com.example.oneuiapp;
 
 import android.app.Application;
+import android.content.Context;
 
 public class MyApplication extends Application {
 
@@ -9,5 +10,10 @@ public class MyApplication extends Application {
         super.onCreate();
         CrashHandler.init(this);
         SettingsHelper.initializeFromSettings(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(SettingsHelper.wrapContext(base));
     }
 }
