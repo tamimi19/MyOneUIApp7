@@ -31,11 +31,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initViews();
-        initFragmentsList(savedInstanceState);
+        initFragmentsList();
         setupDrawer();
         
         if (savedInstanceState != null) {
             mCurrentFragmentIndex = savedInstanceState.getInt("current_fragment", 0);
+            // FragmentManager سيستعيد Fragments تلقائياً
         } else {
             showFragment(mCurrentFragmentIndex);
         }
@@ -46,28 +47,9 @@ public class MainActivity extends AppCompatActivity {
         mDrawerListView = findViewById(R.id.drawer_list_view);
     }
 
-    private void initFragmentsList(Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
-            HomeFragment homeFragment = (HomeFragment) getSupportFragmentManager()
-                    .findFragmentByTag("fragment_0");
-            SettingsFragment settingsFragment = (SettingsFragment) getSupportFragmentManager()
-                    .findFragmentByTag("fragment_1");
-            
-            if (homeFragment != null) {
-                mFragments.add(homeFragment);
-            } else {
-                mFragments.add(new HomeFragment());
-            }
-            
-            if (settingsFragment != null) {
-                mFragments.add(settingsFragment);
-            } else {
-                mFragments.add(new SettingsFragment());
-            }
-        } else {
-            mFragments.add(new HomeFragment());
-            mFragments.add(new SettingsFragment());
-        }
+    private void initFragmentsList() {
+        mFragments.add(new HomeFragment());
+        mFragments.add(new SettingsFragment());
     }
 
     private void setupDrawer() {
