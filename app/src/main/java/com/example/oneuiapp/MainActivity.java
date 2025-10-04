@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,12 +13,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import dev.oneuiproject.oneui.layout.DrawerLayout;
-import dev.oneuiproject.oneui.utils.internal.ToolbarLayoutUtils;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import dev.oneuiproject.oneui.layout.DrawerLayout;
+import dev.oneuiproject.oneui.utils.internal.ToolbarLayoutUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -101,21 +105,6 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = mFragments.get(position);
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.main_content, fragment).commit();
-        
-        if (fragment instanceof SettingsFragment) {
-            mAppBarLayout.setExpanded(false, false);
-            mAppBarLayout.setVisibility(View.GONE);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayShowTitleEnabled(true);
-                getSupportActionBar().setTitle(getString(R.string.title_settings));
-            }
-        } else {
-            mAppBarLayout.setVisibility(View.VISIBLE);
-            mAppBarLayout.setExpanded(true, false);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayShowTitleEnabled(false);
-            }
-        }
     }
 
     private void setupAppBar(Configuration config) {
@@ -154,16 +143,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen(true)) {
-            mDrawerLayout.setDrawerOpen(false, true);
-        } else if (mEnableBackToHeader && mAppBarLayout.seslIsCollapsed()) {
-            mAppBarLayout.setExpanded(true);
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O && isTaskRoot()) {
+            finishAfterTransition();
         } else {
-            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O && isTaskRoot()) {
-                finishAfterTransition();
-            } else {
-                super.onBackPressed();
-            }
+            super.onBackPressed();
         }
     }
 
@@ -203,4 +186,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-                                            }
+}
