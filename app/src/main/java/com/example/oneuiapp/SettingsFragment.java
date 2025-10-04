@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.google.android.material.appbar.AppBarLayout;
 import dev.oneuiproject.oneui.widget.Toast;
 
 public class SettingsFragment extends Fragment {
@@ -52,37 +51,6 @@ public class SettingsFragment extends Fragment {
                                         getString(R.string.settings_notifications_placeholder),
                                         Toast.LENGTH_SHORT)
                                 .show());
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        hideMainAppBar();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        showMainAppBar();
-    }
-
-    private void hideMainAppBar() {
-        if (getActivity() != null) {
-            AppBarLayout appBar = getActivity().findViewById(R.id.app_bar);
-            if (appBar != null) {
-                appBar.setExpanded(false, false);
-                appBar.setVisibility(View.GONE);
-            }
-        }
-    }
-
-    private void showMainAppBar() {
-        if (getActivity() != null) {
-            AppBarLayout appBar = getActivity().findViewById(R.id.app_bar);
-            if (appBar != null) {
-                appBar.setVisibility(View.VISIBLE);
-            }
-        }
     }
 
     private void showLanguageDialog() {
