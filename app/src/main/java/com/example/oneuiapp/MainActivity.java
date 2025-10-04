@@ -1,5 +1,6 @@
 package com.example.oneuiapp;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -39,25 +40,28 @@ public class MainActivity extends AppCompatActivity {
     private int mCurrentFragmentIndex = 0;
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(SettingsHelper.wrapContext(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initViews();
         setupToolbar();
+        initFragmentsList();
         setupDrawer();
         
         if (savedInstanceState != null) {
             mCurrentFragmentIndex = savedInstanceState.getInt("current_fragment", 0);
+            restoreFragments();
+        } else {
+            showFragment(mCurrentFragmentIndex);
         }
         
         setupAppBar(getResources().getConfiguration());
-
-        if (savedInstanceState == null) {
-            showFragment(mCurrentFragmentIndex);
-        } else {
-            updateAppBarVisibility();
-        }
     }
 
     private void initViews() {
@@ -81,9 +85,14 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.setExpandedSubtitle(getString(R.string.app_subtitle));
     }
 
-    private void setupDrawer() {
-        initFragmentsList();
+    private void initFragmentsList() {
+        if (mFragments.isEmpty()) {
+            mFragments.add(new HomeFragment());
+            mFragments.add(new SettingsFragment());
+        }
+    }
 
+    private void setupDrawer() {
         mDrawerListView.setLayoutManager(new LinearLayoutManager(this));
         mDrawerListView.setAdapter(
                 mDrawerAdapter =
@@ -103,15 +112,12 @@ public class MainActivity extends AppCompatActivity {
         mDrawerAdapter.setSelectedItem(mCurrentFragmentIndex);
     }
 
-    private void initFragmentsList() {
-        mFragments.add(new HomeFragment());
-        mFragments.add(new SettingsFragment());
-    }
-
     private void showFragment(int position) {
         Fragment fragment = mFragments.get(position);
         FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction().replace(R.id.main_content, fragment).commit();
+        fm.beginTransaction()
+                .replace(R.id.main_content, fragment, "fragment_" + position)
+                .commitNow();
         
         updateAppBarVisibility();
         
@@ -120,6 +126,15 @@ public class MainActivity extends AppCompatActivity {
             if (config.orientation != Configuration.ORIENTATION_LANDSCAPE && !isInMultiWindowMode()) {
                 mAppBarLayout.setExpanded(true, false);
             }
+        }
+    }
+
+    private void restoreFragments() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.main_content);
+        if (fragment != null) {
+            updateAppBarVisibility();
+        } else {
+            showFragment(mCurrentFragmentIndex);
         }
     }
 
@@ -133,11 +148,8 @@ public class MainActivity extends AppCompatActivity {
         ToolbarLayoutUtils.hideStatusBarForLandscape(this, config.orientation);
         ToolbarLayoutUtils.updateListBothSideMargin(this, mBottomContainer);
 
-        Fragment currentFragment = null;
-        if (mFragments.size() > mCurrentFragmentIndex) {
-            currentFragment = mFragments.get(mCurrentFragmentIndex);
-        }
-
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.main_content);
+        
         if (currentFragment instanceof SettingsFragment) {
             return;
         }
@@ -167,10 +179,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateAppBarVisibility() {
-        Fragment currentFragment = null;
-        if (mFragments.size() > mCurrentFragmentIndex) {
-            currentFragment = mFragments.get(mCurrentFragmentIndex);
-        }
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.main_content);
 
         if (currentFragment instanceof SettingsFragment) {
             mAppBarLayout.setExpanded(false, false);
@@ -239,4 +248,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-                                                }
+                }
