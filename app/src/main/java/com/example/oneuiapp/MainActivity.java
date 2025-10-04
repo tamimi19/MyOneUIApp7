@@ -46,10 +46,17 @@ public class MainActivity extends AppCompatActivity {
         initViews();
         setupToolbar();
         setupDrawer();
+        
+        if (savedInstanceState != null) {
+            mCurrentFragmentIndex = savedInstanceState.getInt("current_fragment", 0);
+        }
+        
         setupAppBar(getResources().getConfiguration());
 
         if (savedInstanceState == null) {
             showFragment(mCurrentFragmentIndex);
+        } else {
+            updateAppBarVisibility();
         }
     }
 
@@ -106,18 +113,9 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.main_content, fragment).commit();
         
-        if (fragment instanceof SettingsFragment) {
-            mAppBarLayout.setExpanded(false, false);
-            mAppBarLayout.setVisibility(View.GONE);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayShowTitleEnabled(true);
-                getSupportActionBar().setTitle(getString(R.string.title_settings));
-            }
-        } else {
-            mAppBarLayout.setVisibility(View.VISIBLE);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayShowTitleEnabled(false);
-            }
+        updateAppBarVisibility();
+        
+        if (!(fragment instanceof SettingsFragment)) {
             Configuration config = getResources().getConfiguration();
             if (config.orientation != Configuration.ORIENTATION_LANDSCAPE && !isInMultiWindowMode()) {
                 mAppBarLayout.setExpanded(true, false);
@@ -125,9 +123,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("current_fragment", mCurrentFragmentIndex);
+    }
+
     private void setupAppBar(Configuration config) {
         ToolbarLayoutUtils.hideStatusBarForLandscape(this, config.orientation);
         ToolbarLayoutUtils.updateListBothSideMargin(this, mBottomContainer);
+
+        Fragment currentFragment = null;
+        if (mFragments.size() > mCurrentFragmentIndex) {
+            currentFragment = mFragments.get(mCurrentFragmentIndex);
+        }
+
+        if (currentFragment instanceof SettingsFragment) {
+            return;
+        }
 
         if (config.orientation != Configuration.ORIENTATION_LANDSCAPE && !isInMultiWindowMode()) {
             mAppBarLayout.seslSetCustomHeightProportion(true, 0.5f);
@@ -153,10 +166,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void updateAppBarVisibility() {
+        Fragment currentFragment = null;
+        if (mFragments.size() > mCurrentFragmentIndex) {
+            currentFragment = mFragments.get(mCurrentFragmentIndex);
+        }
+
+        if (currentFragment instanceof SettingsFragment) {
+            mAppBarLayout.setExpanded(false, false);
+            mAppBarLayout.setVisibility(View.GONE);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayShowTitleEnabled(true);
+                getSupportActionBar().setTitle(getString(R.string.title_settings));
+            }
+        } else {
+            mAppBarLayout.setVisibility(View.VISIBLE);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+            }
+        }
+    }
+
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         setupAppBar(newConfig);
+        updateAppBarVisibility();
     }
 
     @Override
@@ -204,4 +239,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-        }
+                                                }
