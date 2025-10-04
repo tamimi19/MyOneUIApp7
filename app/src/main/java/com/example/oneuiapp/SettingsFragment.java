@@ -19,10 +19,7 @@ public class SettingsFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater,
-            @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
@@ -44,13 +41,8 @@ public class SettingsFragment extends Fragment {
 
         languageSetting.setOnClickListener(v -> showLanguageDialog());
         themeSetting.setOnClickListener(v -> showThemeDialog());
-        notificationsSetting.setOnClickListener(
-                v ->
-                        Toast.makeText(
-                                        requireContext(),
-                                        getString(R.string.settings_notifications_placeholder),
-                                        Toast.LENGTH_SHORT)
-                                .show());
+        notificationsSetting.setOnClickListener(v -> 
+            Toast.makeText(requireContext(), getString(R.string.settings_notifications_placeholder), Toast.LENGTH_SHORT).show());
     }
 
     private void showLanguageDialog() {
@@ -62,18 +54,14 @@ public class SettingsFragment extends Fragment {
 
         int currentSelection = settingsHelper.getLanguageMode();
 
-        androidx.appcompat.app.AlertDialog.Builder builder =
-                new androidx.appcompat.app.AlertDialog.Builder(requireContext());
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(requireContext());
         builder.setTitle(R.string.settings_language);
-        builder.setSingleChoiceItems(
-                options,
-                currentSelection,
-                (dialog, which) -> {
-                    settingsHelper.setLanguageMode(which);
-                    updateLanguageValue();
-                    settingsHelper.applyLanguage(requireActivity());
-                    dialog.dismiss();
-                });
+        builder.setSingleChoiceItems(options, currentSelection, (dialog, which) -> {
+            settingsHelper.setLanguageMode(which);
+            updateLanguageValue();
+            dialog.dismiss();
+            requireActivity().recreate();
+        });
         builder.setNegativeButton(android.R.string.cancel, null);
         builder.show();
     }
@@ -87,18 +75,14 @@ public class SettingsFragment extends Fragment {
 
         int currentSelection = settingsHelper.getThemeMode();
 
-        androidx.appcompat.app.AlertDialog.Builder builder =
-                new androidx.appcompat.app.AlertDialog.Builder(requireContext());
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(requireContext());
         builder.setTitle(R.string.settings_theme);
-        builder.setSingleChoiceItems(
-                options,
-                currentSelection,
-                (dialog, which) -> {
-                    settingsHelper.setThemeMode(which);
-                    updateThemeValue();
-                    settingsHelper.applyTheme();
-                    dialog.dismiss();
-                });
+        builder.setSingleChoiceItems(options, currentSelection, (dialog, which) -> {
+            settingsHelper.setThemeMode(which);
+            updateThemeValue();
+            settingsHelper.applyTheme();
+            dialog.dismiss();
+        });
         builder.setNegativeButton(android.R.string.cancel, null);
         builder.show();
     }
