@@ -6,10 +6,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean mEnableBackToHeader;
     private DrawerLayout mDrawerLayout;
+    private CoordinatorLayout mHomeContainer;
+    private FrameLayout mSettingsContainer;
     private AppBarLayout mAppBarLayout;
     private CollapsingToolbarLayout mCollapsingToolbar;
     private Toolbar mToolbar;
@@ -56,16 +60,16 @@ public class MainActivity extends AppCompatActivity {
         
         if (savedInstanceState != null) {
             mCurrentFragmentIndex = savedInstanceState.getInt("current_fragment", 0);
-            restoreFragments();
-        } else {
-            showFragment(mCurrentFragmentIndex);
         }
         
+        showFragment(mCurrentFragmentIndex);
         setupAppBar(getResources().getConfiguration());
     }
 
     private void initViews() {
         mDrawerLayout = findViewById(R.id.drawer_layout);
+        mHomeContainer = findViewById(R.id.home_container);
+        mSettingsContainer = findViewById(R.id.settings_container);
         mAppBarLayout = findViewById(R.id.app_bar);
         mCollapsingToolbar = findViewById(R.id.collapsing_toolbar);
         mToolbar = findViewById(R.id.toolbar);
@@ -115,26 +119,28 @@ public class MainActivity extends AppCompatActivity {
     private void showFragment(int position) {
         Fragment fragment = mFragments.get(position);
         FragmentManager fm = getSupportFragmentManager();
-        fm.beginTransaction()
-                .replace(R.id.main_content, fragment, "fragment_" + position)
-                .commitNow();
         
-        updateAppBarVisibility();
-        
-        if (!(fragment instanceof SettingsFragment)) {
+        if (fragment instanceof SettingsFragment) {
+            mHomeContainer.setVisibility(View.GONE);
+            mSettingsContainer.setVisibility(View.VISIBLE);
+            
+            fm.beginTransaction()
+                    .replace(R.id.settings_container, fragment, "settings_fragment")
+                    .commit();
+            fm.executePendingTransactions();
+        } else {
+            mSettingsContainer.setVisibility(View.GONE);
+            mHomeContainer.setVisibility(View.VISIBLE);
+            
+            fm.beginTransaction()
+                    .replace(R.id.main_content, fragment, "home_fragment")
+                    .commit();
+            fm.executePendingTransactions();
+            
             Configuration config = getResources().getConfiguration();
             if (config.orientation != Configuration.ORIENTATION_LANDSCAPE && !isInMultiWindowMode()) {
                 mAppBarLayout.setExpanded(true, false);
             }
-        }
-    }
-
-    private void restoreFragments() {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.main_content);
-        if (fragment != null) {
-            updateAppBarVisibility();
-        } else {
-            showFragment(mCurrentFragmentIndex);
         }
     }
 
@@ -147,12 +153,6 @@ public class MainActivity extends AppCompatActivity {
     private void setupAppBar(Configuration config) {
         ToolbarLayoutUtils.hideStatusBarForLandscape(this, config.orientation);
         ToolbarLayoutUtils.updateListBothSideMargin(this, mBottomContainer);
-
-        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.main_content);
-        
-        if (currentFragment instanceof SettingsFragment) {
-            return;
-        }
 
         if (config.orientation != Configuration.ORIENTATION_LANDSCAPE && !isInMultiWindowMode()) {
             mAppBarLayout.seslSetCustomHeightProportion(true, 0.5f);
@@ -178,29 +178,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void updateAppBarVisibility() {
-        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.main_content);
-
-        if (currentFragment instanceof SettingsFragment) {
-            mAppBarLayout.setExpanded(false, false);
-            mAppBarLayout.setVisibility(View.GONE);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayShowTitleEnabled(true);
-                getSupportActionBar().setTitle(getString(R.string.title_settings));
-            }
-        } else {
-            mAppBarLayout.setVisibility(View.VISIBLE);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayShowTitleEnabled(false);
-            }
-        }
-    }
-
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        setupAppBar(newConfig);
-        updateAppBarVisibility();
+        if (mCurrentFragmentIndex == 0) {
+            setupAppBar(newConfig);
+        }
     }
 
     @Override
@@ -248,4 +231,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-                }
+}
