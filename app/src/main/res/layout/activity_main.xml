@@ -31,7 +31,6 @@
                 app:expandedTitleMarginBottom="48dp">
 
                 <LinearLayout
-                    android:id="@+id/header_big_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="?attr/actionBarSize"
@@ -79,16 +78,6 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
-
-        <!-- Toolbar ثابت يظهر عند شاشة الإعدادات -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_fixed"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:background="@android:color/transparent"
-            android:visibility="gone" />
-
-
 
         <LinearLayout
             android:id="@+id/bottom_container"
