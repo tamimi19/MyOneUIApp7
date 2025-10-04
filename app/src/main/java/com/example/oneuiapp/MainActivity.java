@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,15 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import dev.oneuiproject.oneui.layout.DrawerLayout;
 import dev.oneuiproject.oneui.utils.internal.ToolbarLayoutUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,15 +67,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mDrawerLayout.setTitle(getString(R.string.app_name));
-        // استخدم النص من strings.xml (يتبع لغة النظام)
         mDrawerLayout.setExpandedSubtitle(getString(R.string.app_subtitle));
     }
 
     private void setupDrawer() {
         initFragmentsList();
-
-        // لا ننشئ DrawerLayout.DrawerListener لأن الـ inner class داخل المكتبة غير متاح خارجياً.
-        // المكتبة تتعامل مع back press داخلياً، ويمكننا استخدام API العامة فقط.
 
         mDrawerListView.setLayoutManager(new LinearLayoutManager(this));
         mDrawerListView.setAdapter(
@@ -91,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
                                     if (position != mCurrentFragmentIndex) {
                                         mCurrentFragmentIndex = position;
                                         showFragment(position);
-                                        // أغلق الـ drawer عبر API الخاص بـ One UI
                                         mDrawerLayout.setDrawerOpen(false, true);
                                         return true;
                                     }
@@ -110,28 +101,20 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = mFragments.get(position);
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.main_content, fragment).commit();
-
-        // إخفاء/إظهار عناصر الرأس الكبيرة والسهم عند عرض شاشة الإعدادات
-        View headerBig = findViewById(R.id.header_big_container);
-        View swipeUp = findViewById(R.id.swipe_up_container);
-        View headerIcon = findViewById(R.id.header_app_icon);
-        View collapsing = findViewById(R.id.collapsing_toolbar);
-        View toolbarFixed = findViewById(R.id.toolbar_fixed);
-
+        
         if (fragment instanceof SettingsFragment) {
-            if (headerBig != null) headerBig.setVisibility(View.GONE);
-            if (swipeUp != null) swipeUp.setVisibility(View.GONE);
-            if (headerIcon != null) headerIcon.setVisibility(View.GONE);
-            // إخفاء الـ CollapsingToolbar (الثانوي) في الإعدادات
-            if (collapsing != null) collapsing.setVisibility(View.GONE);
-            // إظهار Toolbar ثابت علوي بديل حتى يبقى شريط الأدوات ظاهرًا
-            if (toolbarFixed != null) toolbarFixed.setVisibility(View.VISIBLE);
+            mAppBarLayout.setExpanded(false, false);
+            mAppBarLayout.setVisibility(View.GONE);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayShowTitleEnabled(true);
+                getSupportActionBar().setTitle(getString(R.string.title_settings));
+            }
         } else {
-            if (headerBig != null) headerBig.setVisibility(View.VISIBLE);
-            if (swipeUp != null) swipeUp.setVisibility(View.VISIBLE);
-            if (headerIcon != null) headerIcon.setVisibility(View.VISIBLE);
-            if (collapsing != null) collapsing.setVisibility(View.VISIBLE);
-            if (toolbarFixed != null) toolbarFixed.setVisibility(View.GONE);
+            mAppBarLayout.setVisibility(View.VISIBLE);
+            mAppBarLayout.setExpanded(true, false);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+            }
         }
     }
 
@@ -171,12 +154,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // اترك إغلاق الـ drawer لمكتبة One UI (تسجل callback على OnBackPressedDispatcher داخلياً).
-        // هنا فقط نتعامل مع مشكلة O كما في المثال الرسمي.
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O && isTaskRoot()) {
-            finishAfterTransition();
+        if (mDrawerLayout.isDrawerOpen(true)) {
+            mDrawerLayout.setDrawerOpen(false, true);
+        } else if (mEnableBackToHeader && mAppBarLayout.seslIsCollapsed()) {
+            mAppBarLayout.setExpanded(true);
         } else {
-            super.onBackPressed();
+            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.O && isTaskRoot()) {
+                finishAfterTransition();
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -216,4 +203,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-}
+                                            }
