@@ -49,31 +49,7 @@ public class SettingsHelper {
 
     public void applyLanguage(Activity activity) {
         int mode = getLanguageMode();
-        Locale locale;
-
-        switch (mode) {
-            case LANGUAGE_ARABIC:
-                locale = new Locale("ar");
-                break;
-            case LANGUAGE_ENGLISH:
-                locale = new Locale("en");
-                break;
-            case LANGUAGE_SYSTEM:
-            default:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    locale = Resources.getSystem().getConfiguration().getLocales().get(0);
-                } else {
-                    locale = Resources.getSystem().getConfiguration().locale;
-                }
-                break;
-        }
-
-        Locale.setDefault(locale);
-        Resources resources = context.getResources();
-        Configuration config = resources.getConfiguration();
-        config.setLocale(locale);
-        resources.updateConfiguration(config, resources.getDisplayMetrics());
-
+        setLanguageMode(mode);
         activity.recreate();
     }
 
@@ -95,24 +71,42 @@ public class SettingsHelper {
         }
     }
 
+    public static Context wrapContext(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        int languageMode = prefs.getInt(KEY_LANGUAGE_MODE, LANGUAGE_SYSTEM);
+
+        Locale locale;
+        switch (languageMode) {
+            case LANGUAGE_ARABIC:
+                locale = new Locale("ar");
+                break;
+            case LANGUAGE_ENGLISH:
+                locale = new Locale("en");
+                break;
+            case LANGUAGE_SYSTEM:
+            default:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    locale = Resources.getSystem().getConfiguration().getLocales().get(0);
+                } else {
+                    locale = Resources.getSystem().getConfiguration().locale;
+                }
+                break;
+        }
+
+        Locale.setDefault(locale);
+        Configuration config = new Configuration(context.getResources().getConfiguration());
+        config.setLocale(locale);
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return context.createConfigurationContext(config);
+        } else {
+            context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
+            return context;
+        }
+    }
+
     public static void initializeFromSettings(Context context) {
         SettingsHelper helper = new SettingsHelper(context);
         helper.applyTheme();
-
-        int languageMode = helper.getLanguageMode();
-        if (languageMode != LANGUAGE_SYSTEM) {
-            Locale locale;
-            if (languageMode == LANGUAGE_ARABIC) {
-                locale = new Locale("ar");
-            } else {
-                locale = new Locale("en");
-            }
-
-            Locale.setDefault(locale);
-            Resources resources = context.getResources();
-            Configuration config = resources.getConfiguration();
-            config.setLocale(locale);
-            resources.updateConfiguration(config, resources.getDisplayMetrics());
-        }
     }
-                  }
+}
