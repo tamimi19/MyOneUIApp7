@@ -48,6 +48,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setupToolbar() {
+        if (getActivity() == null) return;
         ((AppCompatActivity) requireActivity()).setSupportActionBar(mToolbar);
         if (((AppCompatActivity) requireActivity()).getSupportActionBar() != null) {
             ((AppCompatActivity) requireActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -56,6 +57,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void setupAppBar(Configuration config) {
+        if (getActivity() == null || !isAdded()) return;
+        
         ToolbarLayoutUtils.hideStatusBarForLandscape(requireActivity(), config.orientation);
         ToolbarLayoutUtils.updateListBothSideMargin(requireActivity(), mBottomContainer);
 
@@ -74,9 +77,7 @@ public class HomeFragment extends Fragment {
             mAppBarLayout.setExpanded(false, false);
             mEnableBackToHeader = false;
             mAppBarLayout.seslSetCustomHeightProportion(true, 0);
-            if (mBottomContainer != null) {
-                mBottomContainer.setAlpha(1f);
-            }
+            setBottomContentEnabled(true);
             if (mSwipeUpContainer != null) {
                 mSwipeUpContainer.setVisibility(View.GONE);
             }
@@ -90,7 +91,18 @@ public class HomeFragment extends Fragment {
     }
 
     private boolean isInMultiWindowMode() {
+        if (getActivity() == null) return false;
         return Build.VERSION.SDK_INT >= 24 && requireActivity().isInMultiWindowMode();
+    }
+
+    private void setBottomContentEnabled(boolean enabled) {
+        if (mBottomContainer != null) {
+            mBottomContainer.setAlpha(enabled ? 1f : 0f);
+        }
+        if (mSwipeUpContainer != null) {
+            mSwipeUpContainer.setClickable(!enabled);
+            mSwipeUpContainer.setEnabled(!enabled);
+        }
     }
 
     private class AppBarOffsetListener implements AppBarLayout.OnOffsetChangedListener {
@@ -102,13 +114,18 @@ public class HomeFragment extends Fragment {
             if (mSwipeUpContainer != null) {
                 if (abs >= totalScrollRange / 2) {
                     mSwipeUpContainer.setAlpha(0f);
+                    mSwipeUpContainer.setClickable(false);
+                    setBottomContentEnabled(true);
                 } else if (abs == 0) {
                     mSwipeUpContainer.setAlpha(1f);
+                    mSwipeUpContainer.setClickable(false);
+                    setBottomContentEnabled(false);
                 } else {
                     float offsetAlpha = (appBarLayout.getY() / totalScrollRange);
                     float arrowAlpha = 1 - (offsetAlpha * -3);
                     arrowAlpha = Math.max(0, Math.min(1, arrowAlpha));
                     mSwipeUpContainer.setAlpha(arrowAlpha);
+                    mSwipeUpContainer.setClickable(false);
                 }
             }
 
