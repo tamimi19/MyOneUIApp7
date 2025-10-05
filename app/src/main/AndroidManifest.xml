@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <!-- إضافة صلاحيات التخزين لحفظ ملفات الأخطاء -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -24,39 +23,12 @@
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/OneUITheme"
-            android:configChanges="orientation|screenSize|keyboardHidden">
+            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- يمكنك حذف هذه الـ Activities إذا كنت ستستخدم Fragments بدلاً منها -->
-        <!-- أو الاحتفاظ بها إذا كنت ستستخدمها في المستقبل -->
-        
-        <!--
-        <activity
-            android:name=".SettingsActivity"
-            android:exported="false"
-            android:theme="@style/OneUITheme"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-
-        <activity
-            android:name=".ScrollListActivity"
-            android:exported="false"
-            android:theme="@style/OneUITheme"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        -->
 
     </application>
 
