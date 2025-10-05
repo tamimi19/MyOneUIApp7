@@ -1,6 +1,7 @@
 package com.example.oneuiapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,11 +61,12 @@ public class SettingsFragment extends Fragment {
         builder.setSingleChoiceItems(options, currentSelection, (dialog, which) -> {
             if (which != settingsHelper.getLanguageMode()) {
                 settingsHelper.setLanguageMode(which);
-                updateLanguageValue();
                 dialog.dismiss();
                 
                 Activity activity = requireActivity();
-                activity.recreate();
+                Intent intent = activity.getIntent();
+                activity.finish();
+                startActivity(intent);
             } else {
                 dialog.dismiss();
             }
@@ -87,7 +89,6 @@ public class SettingsFragment extends Fragment {
         builder.setSingleChoiceItems(options, currentSelection, (dialog, which) -> {
             if (which != settingsHelper.getThemeMode()) {
                 settingsHelper.setThemeMode(which);
-                updateThemeValue();
                 settingsHelper.applyTheme();
             }
             dialog.dismiss();
