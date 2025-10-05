@@ -1,6 +1,5 @@
 package com.example.oneuiapp;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,16 +57,10 @@ public class SettingsFragment extends Fragment {
         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(requireContext());
         builder.setTitle(R.string.settings_language);
         builder.setSingleChoiceItems(options, currentSelection, (dialog, which) -> {
-            if (which != settingsHelper.getLanguageMode()) {
-                settingsHelper.setLanguageMode(which);
-                updateLanguageValue();
-                dialog.dismiss();
-                
-                Activity activity = requireActivity();
-                activity.recreate();
-            } else {
-                dialog.dismiss();
-            }
+            settingsHelper.setLanguageMode(which);
+            updateLanguageValue();
+            dialog.dismiss();
+            requireActivity().recreate();
         });
         builder.setNegativeButton(android.R.string.cancel, null);
         builder.show();
@@ -85,11 +78,9 @@ public class SettingsFragment extends Fragment {
         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(requireContext());
         builder.setTitle(R.string.settings_theme);
         builder.setSingleChoiceItems(options, currentSelection, (dialog, which) -> {
-            if (which != settingsHelper.getThemeMode()) {
-                settingsHelper.setThemeMode(which);
-                updateThemeValue();
-                settingsHelper.applyTheme();
-            }
+            settingsHelper.setThemeMode(which);
+            updateThemeValue();
+            settingsHelper.applyTheme();
             dialog.dismiss();
         });
         builder.setNegativeButton(android.R.string.cancel, null);
