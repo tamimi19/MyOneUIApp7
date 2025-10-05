@@ -21,9 +21,6 @@ jobs:
       - name: Use project-local Gradle cache
         run: echo "GRADLE_USER_HOME=$GITHUB_WORKSPACE/.gradle" >> $GITHUB_ENV
 
-      - name: Clear possibly corrupt Gradle cache
-        run: rm -rf ~/.gradle/caches/jars-9 || true
-
       - name: Download Gradle 9.1.0 temporarily
         run: wget https://services.gradle.org/distributions/gradle-9.1.0-bin.zip -O gradle-9.1.0-bin.zip
 
