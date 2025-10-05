@@ -20,6 +20,10 @@
         android:hardwareAccelerated="true"
         tools:targetApi="34">
 
+         <meta-data
+            android:name="SamsungBasicInteraction"
+            android:value="SEP10" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
