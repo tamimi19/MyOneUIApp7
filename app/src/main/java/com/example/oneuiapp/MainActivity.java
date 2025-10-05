@@ -1,6 +1,5 @@
 package com.example.oneuiapp;
 
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -21,11 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private int mCurrentFragmentIndex = 0;
 
     @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(SettingsHelper.wrapContext(newBase));
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -34,12 +28,13 @@ public class MainActivity extends AppCompatActivity {
         initFragmentsList();
         setupDrawer();
         
-        if (savedInstanceState != null) {
-            mCurrentFragmentIndex = savedInstanceState.getInt("current_fragment", 0);
-            // FragmentManager سيستعيد Fragments تلقائياً
-        } else {
+        if (savedInstanceState == null) {
             showFragment(mCurrentFragmentIndex);
+        } else {
+            mCurrentFragmentIndex = savedInstanceState.getInt("current_fragment", 0);
         }
+        
+        mDrawerAdapter.setSelectedItem(mCurrentFragmentIndex);
     }
 
     private void initViews() {
@@ -67,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                             return false;
                         }));
-        mDrawerAdapter.setSelectedItem(mCurrentFragmentIndex);
     }
 
     private void showFragment(int position) {
