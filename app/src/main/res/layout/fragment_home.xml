@@ -191,7 +191,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:focusable="false"
-        android:clickable="false"
         android:visibility="gone">
 
         <LinearLayout
