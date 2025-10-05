@@ -1,5 +1,6 @@
 package com.example.oneuiapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -44,6 +45,12 @@ public class SettingsHelper {
 
     public void setThemeMode(int mode) {
         prefs.edit().putInt(KEY_THEME_MODE, mode).apply();
+    }
+
+    public void applyLanguage(Activity activity) {
+        int mode = getLanguageMode();
+        setLanguageMode(mode);
+        activity.recreate();
     }
 
     public void applyTheme() {
