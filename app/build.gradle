@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.example.oneuiapp'
-    compileSdk 35
+    compileSdk 36
 
     buildFeatures {
         buildConfig true
@@ -14,7 +14,7 @@ android {
     defaultConfig {
         applicationId "com.example.oneuiapp"
         minSdk 23
-        targetSdk 37
+        targetSdk 36
         versionCode 1
         versionName "1.0"
     }
@@ -52,6 +52,7 @@ configurations.all {
     exclude group: 'androidx.apppickerview', module: 'apppickerview'
     exclude group: 'androidx.indexscroll', module: 'indexscroll'
     exclude group: 'androidx.picker', module: 'picker'
+    exclude group: 'androidx.slidingpanelayout', module: 'slidingpanelayout'
 }
 
 dependencies {
@@ -82,7 +83,6 @@ dependencies {
     
     // مكتبات Google
     implementation 'androidx.annotation:annotation:1.9.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'androidx.documentfile:documentfile:1.1.0'
 }
 
