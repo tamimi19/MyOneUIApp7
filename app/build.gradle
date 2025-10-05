@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.oneuiapp'
+    namespace 'com.sec.sesl.tester'
     compileSdk 34
 
     buildFeatures {
