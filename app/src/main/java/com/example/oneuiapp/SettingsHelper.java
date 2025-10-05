@@ -48,7 +48,6 @@ public class SettingsHelper {
 
     public void applyTheme() {
         int mode = getThemeMode();
-
         switch (mode) {
             case THEME_LIGHT:
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -58,8 +57,7 @@ public class SettingsHelper {
                 break;
             case THEME_SYSTEM:
             default:
-                AppCompatDelegate.setDefaultNightMode(
-                        AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
                 break;
         }
     }
