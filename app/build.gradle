@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'com.diffplug.spotless'
 }
 
 android {
@@ -86,27 +85,4 @@ dependencies {
     implementation 'androidx.documentfile:documentfile:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     
-}
-
-// Spotless configuration
-spotless {
-    java {
-        target 'src/**/*.java'
-        googleJavaFormat()
-        removeUnusedImports()
-    }
-    kotlin {
-        target 'src/**/*.kt'
-        ktlint()
-    }
-    format 'xml', {
-        target 'src/**/*.xml'
-        eclipseWtp(com.diffplug.spotless.extra.wtp.EclipseWtpFormatterStep.XML)
-    }
-    format 'gradle', {
-        target '**/*.gradle', '**/*.gradle.kts'
-        trimTrailingWhitespace()
-        leadingTabsToSpaces() // استخدمنا الخيار الصحيح هنا
-        endWithNewline()
-    }
 }
