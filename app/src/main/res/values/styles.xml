@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="DatePickerTheme" parent="@style/Widget.AppCompat.Light.DatePicker" />
-
-    <style name="BottomNavViewTextMode" parent="Widget.Design.Light.BottomNavigationView.Text" />
-
+    <!-- لا تعرف OneUITheme هنا — سيُستخدم الثيم الافتراضي من مكتبة oneui-design -->
 </resources>
