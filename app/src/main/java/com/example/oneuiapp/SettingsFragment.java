@@ -1,5 +1,7 @@
 package com.example.oneuiapp;
 
+
+import androidx.preference.PreferenceFragmentCompat;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import dev.oneuiproject.oneui.widget.Toast;
 
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends PreferenceFragmentCompat {
 
     private TextView languageValue;
     private TextView themeValue;
@@ -105,5 +107,10 @@ public class SettingsFragment extends Fragment {
             getString(R.string.settings_theme_dark)
         };
         themeValue.setText(options[mode]);
+    }
+
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.preferences, rootKey);
     }
 }
