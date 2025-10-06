@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="16dp"
-                    android:background="@drawable/drawer_item_list_ripple"
+                    android:background="?attr/selectableItemBackground"
                     android:gravity="center_vertical">
 
                     <LinearLayout
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="16dp"
-                    android:background="@drawable/drawer_item_list_ripple"
+                    android:background="?attr/selectableItemBackground"
                     android:gravity="center_vertical">
 
                     <LinearLayout
@@ -155,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="16dp"
-                    android:background="@drawable/drawer_item_list_ripple"
+                    android:background="?attr/selectableItemBackground"
                     android:gravity="center_vertical">
 
                     <TextView
