@@ -71,6 +71,27 @@ public class SettingsHelper {
         }
     }
 
+
+
+// Return the locale used by the app according to settings
+public static Locale getLocale(Context context) {
+    SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+    int languageMode = prefs.getInt(KEY_LANGUAGE_MODE, LANGUAGE_SYSTEM);
+
+    switch (languageMode) {
+        case LANGUAGE_ARABIC:
+            return new Locale("ar");
+        case LANGUAGE_ENGLISH:
+            return new Locale("en");
+        case LANGUAGE_SYSTEM:
+        default:
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                return Resources.getSystem().getConfiguration().getLocales().get(0);
+            } else {
+                return Resources.getSystem().getConfiguration().locale;
+            }
+    }
+}
     public static Context wrapContext(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         int languageMode = prefs.getInt(KEY_LANGUAGE_MODE, LANGUAGE_SYSTEM);
