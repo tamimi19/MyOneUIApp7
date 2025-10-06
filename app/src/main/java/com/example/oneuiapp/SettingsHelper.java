@@ -92,6 +92,7 @@ public static Locale getLocale(Context context) {
             }
     }
 }
+    @SuppressWarnings("deprecation")
     public static Context wrapContext(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         int languageMode = prefs.getInt(KEY_LANGUAGE_MODE, LANGUAGE_SYSTEM);
