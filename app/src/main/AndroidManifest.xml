@@ -20,6 +20,27 @@
         android:hardwareAccelerated="true"
         tools:targetApi="36">
 
+        <meta-data
+            android:name="SamsungBasicInteraction"
+            android:value="SEP10" />
+
+        <meta-data
+            android:name="com.samsung.android.icon_container.has_icon_container"
+            android:value="true" />
+        <meta-data
+            android:name="com.samsung.android.icon_container.feature_appicon"
+            android:value="ADAPTIVEICON_SHADOW" />
+        <meta-data
+            android:name="theming-meta"
+            android:value="meta_998_sesl_app" />
+        <meta-data
+            android:name="theming-meta-xml"
+            android:value="@xml/meta_998_sesl_app" />
+        <meta-data
+                android:name="com.sec.android.app.launcher.icon_theme"
+                android:value="themeColor" />
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
