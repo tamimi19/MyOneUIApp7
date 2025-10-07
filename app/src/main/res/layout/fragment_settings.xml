@@ -4,19 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/oui_background_color">
+    android:background="?android:attr/colorBackground">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/oui_background_color"
+        android:background="?android:attr/colorBackground"
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/settings_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/oui_background_color"
+            android:background="?android:attr/colorBackground"
             app:title="@string/title_settings"
             app:titleTextColor="?android:attr/textColorPrimary" />
 
@@ -34,6 +34,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- قسم المظهر -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                app:roundedCorners="all"
                 android:layout_marginBottom="20dp">
 
                 <LinearLayout
@@ -133,6 +135,7 @@
 
             </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
+            <!-- قسم الإشعارات -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -147,6 +150,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                app:roundedCorners="all"
                 android:layout_marginBottom="20dp">
 
                 <LinearLayout
