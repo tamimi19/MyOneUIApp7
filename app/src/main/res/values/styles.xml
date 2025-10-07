@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- OneUI theme is provided by the library; add roundedCornerColor fallback -->
-    <item name="roundedCornerColor">@android:color/transparent</item>
+    <item name="roundedCornerColor" type="color">@android:color/transparent</item>
 </resources>
