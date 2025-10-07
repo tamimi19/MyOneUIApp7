@@ -32,12 +32,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/oui_background_color"
             android:padding="16dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/oui_background_color"
                 android:text="@string/settings_appearance"
                 android:textSize="20sp"
                 android:textColor="?android:attr/textColorPrimary"
