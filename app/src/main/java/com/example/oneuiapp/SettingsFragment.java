@@ -27,9 +27,6 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // match sample-app: set background color so library drawables work as intended
-        getView().setBackgroundColor(requireContext().getColor(R.color.oui_background_color));
-
         settingsHelper = new SettingsHelper(requireContext());
 
         languageValue = view.findViewById(R.id.language_value);
@@ -109,4 +106,4 @@ public class SettingsFragment extends Fragment {
         };
         themeValue.setText(options[mode]);
     }
-}
+                             }
