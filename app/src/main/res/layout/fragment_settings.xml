@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/oui_background_color">
+    android:background="@color/oui_round_and_bgcolor">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/oui_background_color"
+        android:background="@color/oui_round_and_bgcolor"
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
