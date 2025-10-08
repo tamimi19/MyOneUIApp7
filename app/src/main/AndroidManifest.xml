@@ -18,7 +18,7 @@
         android:theme="@style/OneUITheme"
         android:supportsRtl="true"
         android:hardwareAccelerated="true"
-        tools:targetApi="36">
+        tools:targetApi="34">
 
         <meta-data
             android:name="SamsungBasicInteraction"
