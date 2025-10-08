@@ -21,9 +21,11 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="always"
         android:scrollbars="vertical"
-        android:overScrollMode="always">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,21 +39,20 @@
                 android:text="@string/settings_appearance"
                 android:textSize="14sp"
                 android:textColor="?android:attr/textColorSecondary"
-                android:fontFamily="sans-serif"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="8dp"/>
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/oui_background_color"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="12dp">
+                android:layout_marginBottom="20dp">
 
                 <LinearLayout
                     android:id="@+id/language_setting"
-                    ndroid:layout_width="match_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="16dp"
@@ -59,15 +60,16 @@
                     android:gravity="center_vertical">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_language"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:textColor="?android:attr/textColorPrimary"
                             android:fontFamily="sans-serif" />
 
@@ -88,8 +90,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginStart="17dp"
-                    android:layout_marginEnd="17dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:background="?android:attr/listDivider" />
 
                 <LinearLayout
@@ -97,21 +99,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="12dp"
+                    android:padding="16dp"
                     android:background="@drawable/drawer_item_list_ripple"
                     android:gravity="center_vertical">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_theme"
-                            android:textSize="18sp"
+                            android:textSize="17sp"
                             android:textColor="?android:attr/textColorPrimary"
                             android:fontFamily="sans-serif" />
 
@@ -137,33 +139,32 @@
                 android:text="@string/settings_notifications_section"
                 android:textSize="14sp"
                 android:textColor="?android:attr/textColorSecondary"
-                android:fontFamily="sans-serif"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="8dp"/>
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/oui_background_color"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="8dp">
+                android:layout_marginBottom="20dp">
 
                 <LinearLayout
                     android:id="@+id/notifications_setting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="12dp"
+                    android:padding="16dp"
                     android:background="@drawable/drawer_item_list_ripple"
                     android:gravity="center_vertical">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="@string/settings_notifications"
-                        android:textSize="18sp"
+                        android:textSize="17sp"
                         android:textColor="?android:attr/textColorPrimary"
                         android:fontFamily="sans-serif" />
 
