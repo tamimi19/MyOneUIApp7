@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/oui_background_color"
-                android:paddingHorezintal="4dp">
+                android:paddingHorizontal="4dp">
                 <LinearLayout
                     android:id="@+id/language_setting"
                     android:layout_width="match_parent"
