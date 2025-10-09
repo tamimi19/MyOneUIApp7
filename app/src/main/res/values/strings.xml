@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">OneUI App</string>
-    <string name="app_subtitle">A demo app showcasing One UI design</string>
+    <string name="app_subtitle2">A demo app showcasing One UI design</string>
     <string name="settings_subtitle">Customize your app</string>
     
     <string name="title_features">Main Features</string>
