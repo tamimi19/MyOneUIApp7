@@ -40,18 +40,18 @@
                 android:textSize="14sp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif-medium"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="4dp" />
 
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/oui_background_color"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="6dp">
 
                 <LinearLayout
                     android:id="@+id/language_setting"
@@ -102,10 +102,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
                     android:background="@drawable/drawer_item_list_ripple"
                     android:gravity="center_vertical">
 
@@ -146,25 +142,24 @@
                 android:textSize="14sp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif-medium"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="6dp" />
 
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/oui_background_color"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="6dp">
 
                 <LinearLayout
                     android:id="@+id/notifications_setting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp"
                     android:background="@drawable/drawer_item_list_ripple"
                     android:gravity="center_vertical">
 
