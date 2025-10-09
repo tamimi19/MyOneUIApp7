@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="4dp"
                     android:background="@drawable/drawer_item_list_ripple"
                     android:gravity="center_vertical">
 
