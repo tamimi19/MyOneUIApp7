@@ -70,7 +70,7 @@ public class SettingsFragment extends Fragment {
             
             // إزالة العنوان الفرعي بتعيينه إلى null أو نص فارغ
             // يمكنك تركه فارغاً أو وضع subtitle للشاشة الرئيسية إذا أردت
-            drawerLayout.setExpandedSubtitle(getString(R.string.app_subtitle));
+            drawerLayout.setExpandedSubtitle(getString(R.string.app_subtitle2));
         }
     }
 
