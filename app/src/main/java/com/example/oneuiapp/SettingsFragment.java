@@ -37,7 +37,7 @@ public class SettingsFragment extends Fragment {
             // تعيين العنوان الفرعي (subtitle) الذي يظهر أسفل العنوان الكبير
             // يمكنك تغيير النص إلى أي شيء تريده، مثل:
             // "Customize your app" أو "Manage preferences" أو أي نص آخر
-            drawerLayout.setExpandedSubtitle(R.string.settings_subtitle));
+            drawerLayout.setExpandedSubtitle(getString(R.string.settings_subtitle));
         }
 
         settingsHelper = new SettingsHelper(requireContext());
@@ -70,7 +70,7 @@ public class SettingsFragment extends Fragment {
             
             // إزالة العنوان الفرعي بتعيينه إلى null أو نص فارغ
             // يمكنك تركه فارغاً أو وضع subtitle للشاشة الرئيسية إذا أردت
-            drawerLayout.setExpandedSubtitle(null);
+            drawerLayout.setExpandedSubtitle(getString(R.string.app_subtitle));
         }
     }
 
