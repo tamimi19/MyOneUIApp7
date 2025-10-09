@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import dev.oneuiproject.oneui.widget.Toast;
+// استيراد DrawerLayout من مكتبة One UI للتحكم في العنوان الكبير
+import dev.oneuiproject.oneui.layout.DrawerLayout;
 
 public class SettingsFragment extends Fragment {
 
@@ -27,6 +29,14 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // تغيير عنوان DrawerLayout إلى "Settings" عند فتح شاشة الإعدادات
+        // نحصل على DrawerLayout من Activity الأب باستخدام findViewById
+        DrawerLayout drawerLayout = requireActivity().findViewById(R.id.drawer_layout);
+        if (drawerLayout != null) {
+            // setTitle يغير العنوان الكبير الذي يظهر في أعلى الشاشة
+            drawerLayout.setTitle(getString(R.string.title_settings));
+        }
+
         settingsHelper = new SettingsHelper(requireContext());
 
         languageValue = view.findViewById(R.id.language_value);
@@ -43,6 +53,19 @@ public class SettingsFragment extends Fragment {
         themeSetting.setOnClickListener(v -> showThemeDialog());
         notificationsSetting.setOnClickListener(v -> 
             Toast.makeText(requireContext(), getString(R.string.settings_notifications_placeholder), Toast.LENGTH_SHORT).show());
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        
+        // إعادة العنوان إلى "OneUI App" عند مغادرة شاشة الإعدادات
+        // هذا يحدث عندما يعود المستخدم إلى الشاشة الرئيسية
+        DrawerLayout drawerLayout = requireActivity().findViewById(R.id.drawer_layout);
+        if (drawerLayout != null) {
+            // نعيد العنوان إلى القيمة الأصلية المخزنة في app_name
+            drawerLayout.setTitle(getString(R.string.app_name));
+        }
     }
 
     private void showLanguageDialog() {
