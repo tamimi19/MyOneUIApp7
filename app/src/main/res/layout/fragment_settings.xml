@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- تم حذف AppBarLayout و Toolbar بالكامل -->
+    <!-- العنوان الكبير والعنوان الفرعي سيتم التحكم بهما من خلال DrawerLayout برمجياً -->
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:overScrollMode="always"
         android:scrollbars="vertical"
         android:fillViewport="true">
@@ -22,19 +24,19 @@
             android:paddingTop="1dp"
             android:paddingBottom="1dp">
 
-            <!-- عنوان قسم Appearance - تمت إضافة paddingStart للمحاذاة -->
+            <!-- عنوان قسم Appearance - محاذي مع النص داخل البطاقات -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_appearance"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif-medium"
                 android:paddingStart="25dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp" />
 
-            <!-- تم تقليل المسافة السفلية من 20dp إلى 12dp -->
+            <!-- بطاقة Appearance -->
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,22 +62,20 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <!-- يمكنك تغيير اللون هنا، مثلاً: android:textColor="#2196F3" للأزرق -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_language"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             android:textColor="?android:attr/textColorPrimary"
                             android:fontFamily="sans-serif" />
 
-                        <!-- يمكنك تغيير اللون هنا، مثلاً: android:textColor="#757575" للرمادي -->
                         <TextView
                             android:id="@+id/language_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_language_system"
-                            android:textSize="13sp"
+                            android:textSize="14sp"
                             android:textColor="#4A8FE9"
                             android:fontFamily="sans-serif"
                             android:layout_marginTop="2dp" />
@@ -84,6 +84,7 @@
 
                 </LinearLayout>
 
+                <!-- خط فاصل بين العناصر -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -113,7 +114,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_theme"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             android:textColor="?android:attr/textColorPrimary"
                             android:fontFamily="sans-serif" />
 
@@ -122,7 +123,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_theme_system"
-                            android:textSize="13sp"
+                            android:textSize="14sp"
                             android:textColor="#4A8FE9"
                             android:fontFamily="sans-serif"
                             android:layout_marginTop="2dp" />
@@ -133,19 +134,19 @@
 
             </dev.oneuiproject.oneui.widget.RoundLinearLayout>
 
-            <!-- عنوان قسم Notifications - تمت إضافة paddingStart للمحاذاة -->
+            <!-- عنوان قسم Notifications -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_notifications_section"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif-medium"
                 android:paddingStart="25dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp" />
 
-            <!-- تم تقليل المسافة السفلية من 20dp إلى 12dp -->
+            <!-- بطاقة Notifications -->
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -170,7 +171,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/settings_notifications"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         android:textColor="?android:attr/textColorPrimary"
                         android:fontFamily="sans-serif" />
 
