@@ -33,8 +33,8 @@
             android:orientation="vertical"
             android:paddingStart="1dp"
             android:paddingEnd="1dp"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp">
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp">
 
             <!-- عنوان قسم Appearance - تمت إضافة paddingStart للمحاذاة -->
             <TextView
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/oui_background_color"
-                android:layout_marginBottom="4dp">
+                android:layout_marginBottom="3dp">
 
                 <LinearLayout
                     android:id="@+id/language_setting"
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/oui_background_color"
-                android:layout_marginBottom="4dp">
+                android:layout_marginBottom="3dp">
 
                 <LinearLayout
                     android:id="@+id/notifications_setting"
