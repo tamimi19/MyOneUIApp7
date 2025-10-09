@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">OneUI App</string>
-    <string name="app_subtitle2">A demo app showcasing One UI design</string>
+    <string name="app_subtitle2">A demo app showcasing OneUI design</string>
     <string name="settings_subtitle">Customize your app</string>
     
     <string name="title_features">Main Features</string>
@@ -14,7 +14,7 @@
     <string name="feature3">Consistent UI elements for better experience</string>
     <string name="feature4">Supports dark mode for viewing comfort</string>
     
-    <string name="about_text">This is a demo app to showcase the One UI design</string>
+    <string name="about_text">This is a demo app to showcase the OneUI design</string>
     
     <string name="drawer_home">Home</string>
     <string name="drawer_settings">Settings</string>
