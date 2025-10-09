@@ -33,8 +33,8 @@
             android:orientation="vertical"
             android:paddingStart="1dp"
             android:paddingEnd="1dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp">
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp">
 
             <!-- عنوان قسم Appearance - تمت إضافة paddingStart للمحاذاة -->
             <TextView
