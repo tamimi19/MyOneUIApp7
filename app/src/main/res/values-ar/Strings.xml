@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">تطبيق OneUI</string>
     <string name="app_subtitle">تطبيق تجريبي بتصميم One UI</string>
+    <string name="settings_subtitle">خصص تطبيقك</string>
     
     <string name="title_features">الميزات الرئيسية</string>
     <string name="title_about">حول التطبيق</string>
