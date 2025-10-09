@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import dev.oneuiproject.oneui.widget.Toast;
-// استيراد DrawerLayout من مكتبة One UI للتحكم في العنوان الكبير
 import dev.oneuiproject.oneui.layout.DrawerLayout;
 
 public class SettingsFragment extends Fragment {
@@ -29,12 +28,16 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // تغيير عنوان DrawerLayout إلى "Settings" عند فتح شاشة الإعدادات
-        // نحصل على DrawerLayout من Activity الأب باستخدام findViewById
+        // تغيير عنوان DrawerLayout إلى "Settings" وإضافة subtitle
         DrawerLayout drawerLayout = requireActivity().findViewById(R.id.drawer_layout);
         if (drawerLayout != null) {
-            // setTitle يغير العنوان الكبير الذي يظهر في أعلى الشاشة
+            // تعيين العنوان الكبير الرئيسي
             drawerLayout.setTitle(getString(R.string.title_settings));
+            
+            // تعيين العنوان الفرعي (subtitle) الذي يظهر أسفل العنوان الكبير
+            // يمكنك تغيير النص إلى أي شيء تريده، مثل:
+            // "Customize your app" أو "Manage preferences" أو أي نص آخر
+            drawerLayout.setExpandedSubtitle(R.string.settings_subtitle));
         }
 
         settingsHelper = new SettingsHelper(requireContext());
@@ -59,12 +62,15 @@ public class SettingsFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         
-        // إعادة العنوان إلى "OneUI App" عند مغادرة شاشة الإعدادات
-        // هذا يحدث عندما يعود المستخدم إلى الشاشة الرئيسية
+        // إعادة العنوان والعنوان الفرعي إلى القيم الأصلية عند مغادرة شاشة الإعدادات
         DrawerLayout drawerLayout = requireActivity().findViewById(R.id.drawer_layout);
         if (drawerLayout != null) {
-            // نعيد العنوان إلى القيمة الأصلية المخزنة في app_name
+            // إعادة العنوان إلى "OneUI App"
             drawerLayout.setTitle(getString(R.string.app_name));
+            
+            // إزالة العنوان الفرعي بتعيينه إلى null أو نص فارغ
+            // يمكنك تركه فارغاً أو وضع subtitle للشاشة الرئيسية إذا أردت
+            drawerLayout.setExpandedSubtitle(null);
         }
     }
 
