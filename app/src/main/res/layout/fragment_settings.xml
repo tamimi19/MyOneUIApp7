@@ -28,12 +28,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_appearance"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif-medium"
                 android:paddingStart="25dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="7dp" />
 
             <!-- بطاقة Appearance -->
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
@@ -138,12 +138,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_notifications_section"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif-medium"
                 android:paddingStart="25dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="7dp" />
 
             <!-- بطاقة Notifications -->
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
