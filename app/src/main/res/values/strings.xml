@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">OneUI App</string>
     <string name="app_subtitle">A Demo App Showcasing OneUI Design</string>
-    <string name="settings_subtitle">Customize your app</string>
+    <string name="settings_subtitle">Customize Your App</string>
     
     <string name="title_features">Main Features</string>
     <string name="title_about">About</string>
