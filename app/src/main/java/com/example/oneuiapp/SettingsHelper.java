@@ -1,197 +1,177 @@
 package com.example.oneuiapp;
 
-import android.app.UiModeManager;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.os.Build;
-import android.os.LocaleList;
-import androidx.appcompat.app.AppCompatDelegate;
-import java.util.Locale;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.fragment.app.Fragment;
+import dev.oneuiproject.oneui.layout.DrawerLayout;
+import dev.oneuiproject.oneui.widget.Toast;
 
-/**
- * SettingsHelper يدير جميع إعدادات التطبيق بطريقة مركزية
- * يتضمن إعدادات اللغة، الثيم، والإشعارات
- */
-public class SettingsHelper {
-    
-    // مفاتيح SharedPreferences
-    private static final String PREFS_NAME = "AppSettings";
-    private static final String KEY_LANGUAGE = "language_mode";
-    private static final String KEY_THEME = "theme_mode";
-    private static final String KEY_NOTIFICATIONS = "notifications_enabled";
-    
-    // قيم اللغة
-    public static final int LANGUAGE_SYSTEM = 0;
-    public static final int LANGUAGE_ARABIC = 1;
-    public static final int LANGUAGE_ENGLISH = 2;
-    
-    // قيم الثيم
-    public static final int THEME_SYSTEM = 0;
-    public static final int THEME_LIGHT = 1;
-    public static final int THEME_DARK = 2;
+public class SettingsFragment extends Fragment {
 
-    private Context mContext;
-    private SharedPreferences mPrefs;
+    private TextView languageValue;
+    private TextView themeValue;
+    private SwitchCompat notificationsSwitch;
+    private SettingsHelper settingsHelper;
 
-    public SettingsHelper(Context context) {
-        mContext = context;
-        mPrefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
-    // ============ إدارة اللغة ============
-    
-    /**
-     * الحصول على وضع اللغة المحفوظ
-     * @return وضع اللغة (LANGUAGE_SYSTEM, LANGUAGE_ARABIC, أو LANGUAGE_ENGLISH)
-     */
-    public int getLanguageMode() {
-        return mPrefs.getInt(KEY_LANGUAGE, LANGUAGE_SYSTEM);
-    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-    /**
-     * حفظ وضع اللغة الجديد
-     * @param mode وضع اللغة المطلوب
-     */
-    public void setLanguageMode(int mode) {
-        mPrefs.edit().putInt(KEY_LANGUAGE, mode).apply();
-    }
+        // تغيير عنوان DrawerLayout إلى "Settings" وإضافة subtitle
+        DrawerLayout drawerLayout = requireActivity().findViewById(R.id.drawer_layout);
+        if (drawerLayout != null) {
+            drawerLayout.setTitle(getString(R.string.title_settings));
+            drawerLayout.setExpandedSubtitle(getString(R.string.settings_subtitle));
+        }
 
-    /**
-     * الحصول على الـ Locale المناسب بناءً على الإعدادات المحفوظة
-     * @param context السياق المطلوب
-     * @return الـ Locale المناسب
-     */
-    public static Locale getLocale(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        int mode = prefs.getInt(KEY_LANGUAGE, LANGUAGE_SYSTEM);
+        // تهيئة SettingsHelper
+        settingsHelper = new SettingsHelper(requireContext());
+
+        // ربط العناصر من الـ layout
+        languageValue = view.findViewById(R.id.language_value);
+        themeValue = view.findViewById(R.id.theme_value);
+        notificationsSwitch = view.findViewById(R.id.notifications_switch);
+
+        LinearLayout languageSetting = view.findViewById(R.id.language_setting);
+        LinearLayout themeSetting = view.findViewById(R.id.theme_setting);
+        LinearLayout notificationsSetting = view.findViewById(R.id.notifications_setting);
+
+        // تحديث القيم المعروضة من الإعدادات المحفوظة
+        updateLanguageValue();
+        updateThemeValue();
+        updateNotificationsSwitch();
+
+        // إعداد معالجات الضغط والتغيير
+        languageSetting.setOnClickListener(v -> showLanguageDialog());
+        themeSetting.setOnClickListener(v -> showThemeDialog());
         
-        switch (mode) {
-            case LANGUAGE_ARABIC:
-                return new Locale("ar");
-            case LANGUAGE_ENGLISH:
-                return new Locale("en");
-            default:
-                // استخدام لغة النظام
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    return context.getResources().getConfiguration().getLocales().get(0);
-                } else {
-                    return context.getResources().getConfiguration().locale;
-                }
+        // معالج التغيير للـ Switch
+        // نستخدم setOnCheckedChangeListener بدلاً من setOnClickListener
+        // لأنه يتم استدعاؤه فقط عندما تتغير حالة الـ Switch فعلياً
+        notificationsSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // حفظ الحالة الجديدة
+            settingsHelper.setNotificationsEnabled(isChecked);
+            
+            // إظهار رسالة توضيحية للمستخدم
+            String message = isChecked 
+                    ? getString(R.string.notifications_enabled) 
+                    : getString(R.string.notifications_disabled);
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+        });
+        
+        // يمكن أيضاً جعل الضغط على العنصر بأكمله يغير حالة الـ Switch
+        notificationsSetting.setOnClickListener(v -> {
+            // عكس حالة الـ Switch الحالية
+            notificationsSwitch.setChecked(!notificationsSwitch.isChecked());
+        });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        
+        // إعادة العنوان والعنوان الفرعي إلى القيم الأصلية عند مغادرة شاشة الإعدادات
+        DrawerLayout drawerLayout = requireActivity().findViewById(R.id.drawer_layout);
+        if (drawerLayout != null) {
+            drawerLayout.setTitle(getString(R.string.app_name));
+            drawerLayout.setExpandedSubtitle(getString(R.string.app_subtitle));
         }
     }
 
-    // ============ إدارة الثيم ============
-    
     /**
-     * الحصول على وضع الثيم المحفوظ
-     * @return وضع الثيم (THEME_SYSTEM, THEME_LIGHT, أو THEME_DARK)
+     * عرض نافذة حوارية لاختيار اللغة
      */
-    public int getThemeMode() {
-        return mPrefs.getInt(KEY_THEME, THEME_SYSTEM);
+    private void showLanguageDialog() {
+        String[] options = {
+            getString(R.string.settings_language_system),
+            getString(R.string.settings_language_arabic),
+            getString(R.string.settings_language_english)
+        };
+
+        int currentSelection = settingsHelper.getLanguageMode();
+
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(requireContext());
+        builder.setTitle(R.string.settings_language);
+        builder.setSingleChoiceItems(options, currentSelection, (dialog, which) -> {
+            settingsHelper.setLanguageMode(which);
+            updateLanguageValue();
+            dialog.dismiss();
+            // إعادة إنشاء Activity لتطبيق اللغة الجديدة
+            requireActivity().recreate();
+        });
+        builder.setNegativeButton(android.R.string.cancel, null);
+        builder.show();
     }
 
     /**
-     * حفظ وضع الثيم الجديد
-     * @param mode وضع الثيم المطلوب
+     * عرض نافذة حوارية لاختيار الثيم
      */
-    public void setThemeMode(int mode) {
-        mPrefs.edit().putInt(KEY_THEME, mode).apply();
+    private void showThemeDialog() {
+        String[] options = {
+            getString(R.string.settings_theme_system),
+            getString(R.string.settings_theme_light),
+            getString(R.string.settings_theme_dark)
+        };
+
+        int currentSelection = settingsHelper.getThemeMode();
+
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(requireContext());
+        builder.setTitle(R.string.settings_theme);
+        builder.setSingleChoiceItems(options, currentSelection, (dialog, which) -> {
+            settingsHelper.setThemeMode(which);
+            updateThemeValue();
+            settingsHelper.applyTheme();
+            dialog.dismiss();
+        });
+        builder.setNegativeButton(android.R.string.cancel, null);
+        builder.show();
     }
 
     /**
-     * تطبيق الثيم المحفوظ على التطبيق
+     * تحديث النص المعروض لقيمة اللغة المحفوظة
      */
-    public void applyTheme() {
-        int mode = getThemeMode();
-        switch (mode) {
-            case THEME_LIGHT:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                break;
-            case THEME_DARK:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                break;
-            default:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                break;
-        }
-    }
-
-    // ============ إدارة الإشعارات ============
-    
-    /**
-     * التحقق من تفعيل الإشعارات
-     * @return true إذا كانت الإشعارات مفعّلة، false إذا كانت معطّلة
-     */
-    public boolean areNotificationsEnabled() {
-        // القيمة الافتراضية هي true (مفعّلة)
-        return mPrefs.getBoolean(KEY_NOTIFICATIONS, true);
+    private void updateLanguageValue() {
+        int mode = settingsHelper.getLanguageMode();
+        String[] options = {
+            getString(R.string.settings_language_system),
+            getString(R.string.settings_language_arabic),
+            getString(R.string.settings_language_english)
+        };
+        languageValue.setText(options[mode]);
     }
 
     /**
-     * تفعيل أو تعطيل الإشعارات
-     * @param enabled true لتفعيل الإشعارات، false لتعطيلها
+     * تحديث النص المعروض لقيمة الثيم المحفوظ
      */
-    public void setNotificationsEnabled(boolean enabled) {
-        mPrefs.edit().putBoolean(KEY_NOTIFICATIONS, enabled).apply();
-        
-        // هنا يمكنك إضافة منطق إضافي لتطبيق التغييرات فوراً
-        // مثل إلغاء جميع الإشعارات المجدولة إذا تم التعطيل
-        // أو إعادة جدولتها إذا تم التفعيل
-        
-        if (enabled) {
-            // تم تفعيل الإشعارات - يمكنك هنا إضافة كود لإعادة تفعيل الإشعارات
-            // مثال: scheduleNotifications();
-        } else {
-            // تم تعطيل الإشعارات - يمكنك هنا إضافة كود لإلغاء جميع الإشعارات
-            // مثال: cancelAllNotifications();
-        }
+    private void updateThemeValue() {
+        int mode = settingsHelper.getThemeMode();
+        String[] options = {
+            getString(R.string.settings_theme_system),
+            getString(R.string.settings_theme_light),
+            getString(R.string.settings_theme_dark)
+        };
+        themeValue.setText(options[mode]);
     }
 
-    // ============ Context Wrapper للغة والثيم ============
-    
     /**
-     * إنشاء ContextWrapper يطبق إعدادات اللغة والثيم
-     * يُستخدم في attachBaseContext في BaseActivity
-     * @param context السياق الأصلي
-     * @return ContextWrapper مع الإعدادات المطبقة
+     * تحديث حالة زر الإشعارات من الإعدادات المحفوظة
      */
-    public static ContextWrapper wrapContext(Context context) {
-        Configuration config = new Configuration(context.getResources().getConfiguration());
-        Locale locale = getLocale(context);
-        
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            config.setLocale(locale);
-            config.setLocales(new LocaleList(locale));
-        } else {
-            config.locale = locale;
-        }
-        
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            config.setLayoutDirection(locale);
-        }
-        
-        // تطبيق الثيم
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        int themeMode = prefs.getInt(KEY_THEME, THEME_SYSTEM);
-        
-        int uiMode;
-        if (themeMode == THEME_LIGHT) {
-            uiMode = Configuration.UI_MODE_NIGHT_NO;
-        } else if (themeMode == THEME_DARK) {
-            uiMode = Configuration.UI_MODE_NIGHT_YES;
-        } else {
-            // استخدام إعدادات النظام
-            UiModeManager uiModeManager = (UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE);
-            uiMode = uiModeManager.getNightMode() == UiModeManager.MODE_NIGHT_YES 
-                    ? Configuration.UI_MODE_NIGHT_YES 
-                    : Configuration.UI_MODE_NIGHT_NO;
-        }
-        
-        config.uiMode = (config.uiMode & ~Configuration.UI_MODE_NIGHT_MASK) | uiMode;
-        
-        Context newContext = context.createConfigurationContext(config);
-        return new ContextWrapper(newContext);
+    private void updateNotificationsSwitch() {
+        // الحصول على الحالة المحفوظة وتطبيقها على الـ Switch
+        boolean enabled = settingsHelper.areNotificationsEnabled();
+        notificationsSwitch.setChecked(enabled);
     }
 }
