@@ -34,12 +34,10 @@
     <string name="settings_theme_system">النظام</string>
     <string name="settings_theme_light">فاتح</string>
     <string name="settings_theme_dark">داكن</string>
-    
-    <string name="settings_notifications_section">الإشعارات</string>
-    <string name="settings_notifications">الإشعارات</string>
-    <string name="settings_notifications_placeholder">ميزة الإشعارات قريباً</string>
 
     <!-- إعدادات الإشعارات -->
+    <string name="settings_notifications_section">الإشعارات</string>
+    <string name="settings_notifications_placeholder">ميزة الإشعارات قريباً</string>
     <string name="settings_notifications">الإشعارات</string>
     <string name="settings_notifications_description">تلقي إشعارات التطبيق</string>
     <string name="notifications_enabled">تم تفعيل الإشعارات</string>
