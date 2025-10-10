@@ -38,4 +38,11 @@
     <string name="settings_notifications_section">الإشعارات</string>
     <string name="settings_notifications">الإشعارات</string>
     <string name="settings_notifications_placeholder">ميزة الإشعارات قريباً</string>
+
+    <!-- إعدادات الإشعارات -->
+    <string name="settings_notifications">الإشعارات</string>
+    <string name="settings_notifications_description">تلقي إشعارات التطبيق</string>
+    <string name="notifications_enabled">تم تفعيل الإشعارات</string>
+    <string name="notifications_disabled">تم تعطيل الإشعارات</string>
+
 </resources>
