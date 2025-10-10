@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         app:layout_location="main_content" />
 
-    <androidx.recyclerview.widget.RecyclerView
+     <androidx.core.widget.NestedScrollView
         android:id="@+id/drawer_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
