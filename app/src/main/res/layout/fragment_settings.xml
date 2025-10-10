@@ -32,8 +32,9 @@
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif-medium"
                 android:paddingStart="25dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="7dp" />
+                android:paddingTop="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="6dp" />
 
             <!-- بطاقة Appearance -->
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
@@ -143,7 +144,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:paddingStart="25dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="7dp" />
+                android:layout_marginBottom="6dp" />
 
             <!-- بطاقة Notifications -->
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
