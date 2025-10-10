@@ -18,7 +18,7 @@
         android:id="@+id/drawer_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="60dp"
+        android:paddingTop="62dp"
         android:clipToPadding="false"
         android:scrollbars="vertical"
         android:overScrollMode="always"
