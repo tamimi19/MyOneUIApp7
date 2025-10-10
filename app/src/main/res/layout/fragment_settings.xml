@@ -32,8 +32,7 @@
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif-medium"
                 android:paddingStart="25dp"
-                android:paddingTop="1dp"
-                android:layout_marginTop="8dp"
+                android:paddingTop="4dp"
                 android:layout_marginBottom="6dp" />
 
             <!-- بطاقة Appearance -->
@@ -75,7 +74,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_language_system"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textColor="#4A8FE9"
                             android:fontFamily="sans-serif"
                             android:layout_marginTop="2dp" />
@@ -123,7 +122,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_theme_system"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textColor="#4A8FE9"
                             android:fontFamily="sans-serif"
                             android:layout_marginTop="2dp" />
