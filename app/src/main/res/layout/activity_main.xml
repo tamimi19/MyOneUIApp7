@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:expanded="false"
-    app:title="@string/app_name">
+    app:title="@string/app_name"
+    app:subtitle="@string/app_subtitle">
 
     <FrameLayout
         android:id="@+id/main_content"
@@ -17,7 +18,7 @@
         android:id="@+id/drawer_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="12dp"
+        android:paddingTop="60dp"
         android:clipToPadding="false"
         android:scrollbars="vertical"
         android:overScrollMode="always"
