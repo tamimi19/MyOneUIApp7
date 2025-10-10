@@ -5,14 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- تم حذف AppBarLayout و Toolbar بالكامل -->
-    <!-- العنوان الكبير والعنوان الفرعي سيتم التحكم بهما من خلال DrawerLayout برمجياً -->
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="always"
-        android:paddingBottom="1dp"
         android:scrollbars="vertical">
 
         <LinearLayout
@@ -29,12 +25,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_appearance"
-                android:textSize="13sp"
+                android:textSize="14sp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif-medium"
                 android:paddingStart="25dp"
-                android:paddingTop="0dp"
-                android:layout_marginBottom="6dp" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
             <!-- بطاقة Appearance -->
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
@@ -44,6 +40,7 @@
                 android:background="@color/oui_background_color"
                 android:layout_marginBottom="3dp">
 
+                <!-- خيار اللغة -->
                 <LinearLayout
                     android:id="@+id/language_setting"
                     android:layout_width="match_parent"
@@ -66,7 +63,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_language"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             android:textColor="?android:attr/textColorPrimary"
                             android:fontFamily="sans-serif" />
 
@@ -75,7 +72,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_language_system"
-                            android:textSize="13sp"
+                            android:textSize="14sp"
                             android:textColor="#4A8FE9"
                             android:fontFamily="sans-serif"
                             android:layout_marginTop="2dp" />
@@ -84,7 +81,7 @@
 
                 </LinearLayout>
 
-                <!-- خط فاصل بين العناصر -->
+                <!-- خط فاصل -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -92,6 +89,7 @@
                     android:layout_marginEnd="2dp"
                     android:background="?android:attr/listDivider" />
 
+                <!-- خيار الثيم -->
                 <LinearLayout
                     android:id="@+id/theme_setting"
                     android:layout_width="match_parent"
@@ -114,7 +112,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_theme"
-                            android:textSize="16sp"
+                            android:textSize="17sp"
                             android:textColor="?android:attr/textColorPrimary"
                             android:fontFamily="sans-serif" />
 
@@ -123,7 +121,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings_theme_system"
-                            android:textSize="13sp"
+                            android:textSize="14sp"
                             android:textColor="#4A8FE9"
                             android:fontFamily="sans-serif"
                             android:layout_marginTop="2dp" />
@@ -139,12 +137,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_notifications_section"
-                android:textSize="13sp"
+                android:textSize="14sp"
                 android:textColor="?android:attr/textColorSecondary"
                 android:fontFamily="sans-serif-medium"
                 android:paddingStart="25dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="6dp" />
+                android:layout_marginBottom="8dp" />
 
             <!-- بطاقة Notifications -->
             <dev.oneuiproject.oneui.widget.RoundLinearLayout
@@ -154,6 +152,7 @@
                 android:background="@color/oui_background_color"
                 android:layout_marginBottom="3dp">
 
+                <!-- خيار الإشعارات مع Switch -->
                 <LinearLayout
                     android:id="@+id/notifications_setting"
                     android:layout_width="match_parent"
@@ -166,14 +165,39 @@
                     android:background="@drawable/drawer_item_list_ripple"
                     android:gravity="center_vertical">
 
-                    <TextView
+                    <!-- النص على اليسار -->
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/settings_notifications"
-                        android:textSize="16sp"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:fontFamily="sans-serif" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_notifications"
+                            android:textSize="17sp"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:fontFamily="sans-serif" />
+
+                        <!-- يمكنك إضافة وصف إضافي هنا إذا أردت -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_notifications_description"
+                            android:textSize="14sp"
+                            android:textColor="?android:attr/textColorSecondary"
+                            android:fontFamily="sans-serif"
+                            android:layout_marginTop="2dp" />
+
+                    </LinearLayout>
+
+                    <!-- الـ Switch على اليمين -->
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/notifications_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp" />
 
                 </LinearLayout>
 
