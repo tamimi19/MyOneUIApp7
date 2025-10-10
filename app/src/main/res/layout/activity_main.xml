@@ -24,3 +24,4 @@
         app:layout_location="drawer_panel" />
 
 </dev.oneuiproject.oneui.layout.DrawerLayout>
+ </androidx.core.widget.NestedScrollView>
