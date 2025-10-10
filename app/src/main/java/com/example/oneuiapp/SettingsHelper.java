@@ -40,6 +40,32 @@ public class SettingsHelper {
         mPrefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
     }
 
+    // ============ التهيئة الأولية ============
+    
+    /**
+     * تهيئة إعدادات التطبيق عند بدء التشغيل
+     * يتم استدعاء هذه الدالة من MyApplication.onCreate()
+     * لتطبيق الثيم المحفوظ قبل إنشاء أي Activity
+     * @param context سياق التطبيق
+     */
+    public static void initializeFromSettings(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        int themeMode = prefs.getInt(KEY_THEME, THEME_SYSTEM);
+        
+        // تطبيق الثيم المحفوظ على مستوى التطبيق بأكمله
+        switch (themeMode) {
+            case THEME_LIGHT:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+            case THEME_DARK:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+            default:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                break;
+        }
+    }
+
     // ============ إدارة اللغة ============
     
     /**
@@ -102,6 +128,7 @@ public class SettingsHelper {
 
     /**
      * تطبيق الثيم المحفوظ على التطبيق
+     * يتم استدعاء هذه الدالة عند تغيير الثيم من الإعدادات
      */
     public void applyTheme() {
         int mode = getThemeMode();
