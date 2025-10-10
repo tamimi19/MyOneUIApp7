@@ -1,61 +1,110 @@
 package com.example.oneuiapp;
 
-import android.app.Activity;
+import android.app.UiModeManager;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Build;
+import android.os.LocaleList;
 import androidx.appcompat.app.AppCompatDelegate;
 import java.util.Locale;
 
+/**
+ * SettingsHelper يدير جميع إعدادات التطبيق بطريقة مركزية
+ * يتضمن إعدادات اللغة، الثيم، والإشعارات
+ */
 public class SettingsHelper {
-
+    
+    // مفاتيح SharedPreferences
     private static final String PREFS_NAME = "AppSettings";
-    private static final String KEY_LANGUAGE_MODE = "language_mode";
-    private static final String KEY_THEME_MODE = "theme_mode";
-
+    private static final String KEY_LANGUAGE = "language_mode";
+    private static final String KEY_THEME = "theme_mode";
+    private static final String KEY_NOTIFICATIONS = "notifications_enabled";
+    
+    // قيم اللغة
     public static final int LANGUAGE_SYSTEM = 0;
     public static final int LANGUAGE_ARABIC = 1;
     public static final int LANGUAGE_ENGLISH = 2;
-
+    
+    // قيم الثيم
     public static final int THEME_SYSTEM = 0;
     public static final int THEME_LIGHT = 1;
     public static final int THEME_DARK = 2;
 
-    private SharedPreferences prefs;
-    private Context context;
+    private Context mContext;
+    private SharedPreferences mPrefs;
 
     public SettingsHelper(Context context) {
-        this.context = context.getApplicationContext();
-        this.prefs = this.context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        mContext = context;
+        mPrefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
     }
 
+    // ============ إدارة اللغة ============
+    
+    /**
+     * الحصول على وضع اللغة المحفوظ
+     * @return وضع اللغة (LANGUAGE_SYSTEM, LANGUAGE_ARABIC, أو LANGUAGE_ENGLISH)
+     */
     public int getLanguageMode() {
-        return prefs.getInt(KEY_LANGUAGE_MODE, LANGUAGE_SYSTEM);
+        return mPrefs.getInt(KEY_LANGUAGE, LANGUAGE_SYSTEM);
     }
 
+    /**
+     * حفظ وضع اللغة الجديد
+     * @param mode وضع اللغة المطلوب
+     */
     public void setLanguageMode(int mode) {
-        prefs.edit().putInt(KEY_LANGUAGE_MODE, mode).apply();
+        mPrefs.edit().putInt(KEY_LANGUAGE, mode).apply();
     }
 
+    /**
+     * الحصول على الـ Locale المناسب بناءً على الإعدادات المحفوظة
+     * @param context السياق المطلوب
+     * @return الـ Locale المناسب
+     */
+    public static Locale getLocale(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        int mode = prefs.getInt(KEY_LANGUAGE, LANGUAGE_SYSTEM);
+        
+        switch (mode) {
+            case LANGUAGE_ARABIC:
+                return new Locale("ar");
+            case LANGUAGE_ENGLISH:
+                return new Locale("en");
+            default:
+                // استخدام لغة النظام
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    return context.getResources().getConfiguration().getLocales().get(0);
+                } else {
+                    return context.getResources().getConfiguration().locale;
+                }
+        }
+    }
+
+    // ============ إدارة الثيم ============
+    
+    /**
+     * الحصول على وضع الثيم المحفوظ
+     * @return وضع الثيم (THEME_SYSTEM, THEME_LIGHT, أو THEME_DARK)
+     */
     public int getThemeMode() {
-        return prefs.getInt(KEY_THEME_MODE, THEME_SYSTEM);
+        return mPrefs.getInt(KEY_THEME, THEME_SYSTEM);
     }
 
+    /**
+     * حفظ وضع الثيم الجديد
+     * @param mode وضع الثيم المطلوب
+     */
     public void setThemeMode(int mode) {
-        prefs.edit().putInt(KEY_THEME_MODE, mode).apply();
+        mPrefs.edit().putInt(KEY_THEME, mode).apply();
     }
 
-    public void applyLanguage(Activity activity) {
-        int mode = getLanguageMode();
-        setLanguageMode(mode);
-        activity.recreate();
-    }
-
+    /**
+     * تطبيق الثيم المحفوظ على التطبيق
+     */
     public void applyTheme() {
         int mode = getThemeMode();
-
         switch (mode) {
             case THEME_LIGHT:
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -63,72 +112,86 @@ public class SettingsHelper {
             case THEME_DARK:
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 break;
-            case THEME_SYSTEM:
             default:
-                AppCompatDelegate.setDefaultNightMode(
-                        AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
                 break;
         }
     }
 
-
-
-// Return the locale used by the app according to settings
-public static Locale getLocale(Context context) {
-    SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-    int languageMode = prefs.getInt(KEY_LANGUAGE_MODE, LANGUAGE_SYSTEM);
-
-    switch (languageMode) {
-        case LANGUAGE_ARABIC:
-            return new Locale("ar");
-        case LANGUAGE_ENGLISH:
-            return new Locale("en");
-        case LANGUAGE_SYSTEM:
-        default:
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                return Resources.getSystem().getConfiguration().getLocales().get(0);
-            } else {
-                return Resources.getSystem().getConfiguration().locale;
-            }
+    // ============ إدارة الإشعارات ============
+    
+    /**
+     * التحقق من تفعيل الإشعارات
+     * @return true إذا كانت الإشعارات مفعّلة، false إذا كانت معطّلة
+     */
+    public boolean areNotificationsEnabled() {
+        // القيمة الافتراضية هي true (مفعّلة)
+        return mPrefs.getBoolean(KEY_NOTIFICATIONS, true);
     }
-}
-    @SuppressWarnings("deprecation")
-    public static Context wrapContext(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        int languageMode = prefs.getInt(KEY_LANGUAGE_MODE, LANGUAGE_SYSTEM);
 
-        Locale locale;
-        switch (languageMode) {
-            case LANGUAGE_ARABIC:
-                locale = new Locale("ar");
-                break;
-            case LANGUAGE_ENGLISH:
-                locale = new Locale("en");
-                break;
-            case LANGUAGE_SYSTEM:
-            default:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    locale = Resources.getSystem().getConfiguration().getLocales().get(0);
-                } else {
-                    locale = Resources.getSystem().getConfiguration().locale;
-                }
-                break;
+    /**
+     * تفعيل أو تعطيل الإشعارات
+     * @param enabled true لتفعيل الإشعارات، false لتعطيلها
+     */
+    public void setNotificationsEnabled(boolean enabled) {
+        mPrefs.edit().putBoolean(KEY_NOTIFICATIONS, enabled).apply();
+        
+        // هنا يمكنك إضافة منطق إضافي لتطبيق التغييرات فوراً
+        // مثل إلغاء جميع الإشعارات المجدولة إذا تم التعطيل
+        // أو إعادة جدولتها إذا تم التفعيل
+        
+        if (enabled) {
+            // تم تفعيل الإشعارات - يمكنك هنا إضافة كود لإعادة تفعيل الإشعارات
+            // مثال: scheduleNotifications();
+        } else {
+            // تم تعطيل الإشعارات - يمكنك هنا إضافة كود لإلغاء جميع الإشعارات
+            // مثال: cancelAllNotifications();
         }
+    }
 
-        Locale.setDefault(locale);
+    // ============ Context Wrapper للغة والثيم ============
+    
+    /**
+     * إنشاء ContextWrapper يطبق إعدادات اللغة والثيم
+     * يُستخدم في attachBaseContext في BaseActivity
+     * @param context السياق الأصلي
+     * @return ContextWrapper مع الإعدادات المطبقة
+     */
+    public static ContextWrapper wrapContext(Context context) {
         Configuration config = new Configuration(context.getResources().getConfiguration());
-        config.setLocale(locale);
+        Locale locale = getLocale(context);
         
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            return context.createConfigurationContext(config);
+            config.setLocale(locale);
+            config.setLocales(new LocaleList(locale));
         } else {
-            context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
-            return context;
+            config.locale = locale;
         }
-    }
-
-    public static void initializeFromSettings(Context context) {
-        SettingsHelper helper = new SettingsHelper(context);
-        helper.applyTheme();
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            config.setLayoutDirection(locale);
+        }
+        
+        // تطبيق الثيم
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        int themeMode = prefs.getInt(KEY_THEME, THEME_SYSTEM);
+        
+        int uiMode;
+        if (themeMode == THEME_LIGHT) {
+            uiMode = Configuration.UI_MODE_NIGHT_NO;
+        } else if (themeMode == THEME_DARK) {
+            uiMode = Configuration.UI_MODE_NIGHT_YES;
+        } else {
+            // استخدام إعدادات النظام
+            UiModeManager uiModeManager = (UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE);
+            uiMode = uiModeManager.getNightMode() == UiModeManager.MODE_NIGHT_YES 
+                    ? Configuration.UI_MODE_NIGHT_YES 
+                    : Configuration.UI_MODE_NIGHT_NO;
+        }
+        
+        config.uiMode = (config.uiMode & ~Configuration.UI_MODE_NIGHT_MASK) | uiMode;
+        
+        Context newContext = context.createConfigurationContext(config);
+        return new ContextWrapper(newContext);
     }
 }
