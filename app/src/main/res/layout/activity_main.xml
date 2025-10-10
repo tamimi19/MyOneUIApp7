@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
+        android:overScrollMode="always"
         app:layout_location="drawer_panel" />
 
 </dev.oneuiproject.oneui.layout.DrawerLayout>
