@@ -186,7 +186,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/settings_notifications_description"
                             android:textSize="14sp"
-                            android:textColor="?android:attr/textColorSecondary"
+                            android:textColor="#4A8FE9"
                             android:fontFamily="sans-serif"
                             android:layout_marginTop="2dp" />
 
