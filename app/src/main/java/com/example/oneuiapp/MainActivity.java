@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -22,6 +23,10 @@ public class MainActivity extends BaseActivity {
     
     // مفتاح لحفظ واستعادة الـ Fragment الحالي
     private static final String KEY_CURRENT_FRAGMENT = "current_fragment_index";
+    
+    // Tags للـ Fragments لاستخدامها في FragmentManager
+    private static final String TAG_HOME = "fragment_home";
+    private static final String TAG_SETTINGS = "fragment_settings";
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -36,25 +41,32 @@ public class MainActivity extends BaseActivity {
         initViews();
         initFragmentsList();
         
-        // استعادة الحالة المحفوظة إذا كانت موجودة (بعد تغيير اللغة أو الثيم أو تدوير الشاشة)
+        // استعادة الحالة المحفوظة إذا كانت موجودة
         if (savedInstanceState != null) {
             mCurrentFragmentIndex = savedInstanceState.getInt(KEY_CURRENT_FRAGMENT, 0);
             
-            // محاولة استعادة الـ Fragment من FragmentManager
-            // عندما يتم recreate، FragmentManager يستعيد الـ Fragments تلقائياً
+            // استعادة الـ Fragments من FragmentManager إذا كانت موجودة
+            // هذا يحدث عند إعادة إنشاء Activity بعد تغيير اللغة أو تدوير الشاشة
             FragmentManager fm = getSupportFragmentManager();
-            Fragment existingFragment = fm.findFragmentById(R.id.main_content);
+            Fragment homeFragment = fm.findFragmentByTag(TAG_HOME);
+            Fragment settingsFragment = fm.findFragmentByTag(TAG_SETTINGS);
             
-            // إذا لم يكن هناك Fragment معروض حالياً، عرض الـ Fragment المحفوظ
-            if (existingFragment == null) {
-                showFragment(mCurrentFragmentIndex, false);
+            // إذا تم العثور على الـ Fragments المحفوظة، استخدمها بدلاً من إنشاء جديدة
+            if (homeFragment != null && settingsFragment != null) {
+                mFragments.clear();
+                mFragments.add(homeFragment);
+                mFragments.add(settingsFragment);
             }
+            
+            // إظهار الـ Fragment الصحيح وإخفاء الباقي
+            showFragmentFast(mCurrentFragmentIndex);
         } else {
-            // أول مرة يتم فيها إنشاء Activity - عرض الشاشة الرئيسية
-            showFragment(mCurrentFragmentIndex, false);
+            // أول مرة يتم فيها إنشاء Activity - إضافة جميع الـ Fragments مرة واحدة
+            // نستخدم add() بدلاً من replace() ونخفي جميع الـ Fragments ما عدا الأول
+            addAllFragments();
         }
         
-        // إعداد الدرج بعد استعادة الحالة لضمان تحديد العنصر الصحيح
+        // إعداد الدرج بعد استعادة الحالة
         setupDrawer();
     }
 
@@ -64,10 +76,32 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initFragmentsList() {
-        // إنشاء قائمة الـ Fragments - استخدم نفس Fragments في كل مرة
-        mFragments.clear();
-        mFragments.add(new HomeFragment());
-        mFragments.add(new SettingsFragment());
+        // إنشاء قائمة الـ Fragments إذا كانت فارغة
+        // هذا يحدث فقط في المرة الأولى التي يتم فيها إنشاء Activity
+        if (mFragments.isEmpty()) {
+            mFragments.add(new HomeFragment());
+            mFragments.add(new SettingsFragment());
+        }
+    }
+
+    /**
+     * إضافة جميع الـ Fragments مرة واحدة عند أول إنشاء للـ Activity
+     * يتم إخفاء جميع الـ Fragments ما عدا الأول
+     * هذا النمط يُسمى "Fragment Caching" ويجعل الانتقال بين الشاشات فورياً وسلساً
+     */
+    private void addAllFragments() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        
+        // إضافة Home Fragment وإظهاره
+        transaction.add(R.id.main_content, mFragments.get(0), TAG_HOME);
+        
+        // إضافة Settings Fragment وإخفاؤه
+        transaction.add(R.id.main_content, mFragments.get(1), TAG_SETTINGS);
+        transaction.hide(mFragments.get(1));
+        
+        // تنفيذ العملية دفعة واحدة لتحسين الأداء
+        transaction.commit();
     }
 
     private void setupDrawer() {
@@ -82,56 +116,56 @@ public class MainActivity extends BaseActivity {
                     // إذا كان العنصر المضغوط مختلفاً عن العنصر الحالي، غير الـ Fragment
                     if (position != mCurrentFragmentIndex) {
                         mCurrentFragmentIndex = position;
-                        showFragment(position, true);
-                        return true; // تم التغيير بنجاح
+                        // استخدام showFragmentFast بدلاً من showFragment العادية
+                        // للحصول على انتقال فوري وسلس بدون أي تأخير
+                        showFragmentFast(position);
+                        return true;
                     }
-                    return false; // لم يتم التغيير (نفس العنصر)
+                    return false;
                 });
         
         mDrawerListView.setAdapter(mDrawerAdapter);
-        
-        // تحديد العنصر الحالي في القائمة
-        // هذا مهم جداً خاصة بعد recreate() لضمان ظهور التحديد الصحيح
         mDrawerAdapter.setSelectedItem(mCurrentFragmentIndex);
     }
 
     /**
-     * عرض Fragment في الموضع المحدد
-     * @param position موضع الـ Fragment في القائمة
-     * @param addToBackStack هل نضيف هذه العملية إلى back stack
+     * عرض Fragment باستخدام show() و hide() بدلاً من replace()
+     * هذا النمط أسرع بكثير لأنه لا يتطلب إعادة إنشاء الـ Views
+     * بل فقط إخفاء وإظهار Views موجودة بالفعل في الذاكرة
+     * 
+     * @param position موضع الـ Fragment المطلوب عرضه
      */
-    private void showFragment(int position, boolean addToBackStack) {
+    private void showFragmentFast(int position) {
         if (position < 0 || position >= mFragments.size()) {
             return;
         }
         
-        Fragment fragment = mFragments.get(position);
         FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
         
-        // استخدام tag فريد لكل Fragment لتجنب التكرار
-        String tag = "fragment_" + position;
-        
-        // التحقق من وجود Fragment بنفس الـ tag
-        Fragment existingFragment = fm.findFragmentByTag(tag);
-        
-        if (existingFragment != null && existingFragment.isAdded()) {
-            // الـ Fragment موجود بالفعل، فقط أظهره
-            fm.beginTransaction()
-                    .replace(R.id.main_content, existingFragment, tag)
-                    .commit();
-        } else {
-            // الـ Fragment غير موجود، أنشئه وأضفه
-            fm.beginTransaction()
-                    .replace(R.id.main_content, fragment, tag)
-                    .commit();
+        // إخفاء جميع الـ Fragments
+        for (int i = 0; i < mFragments.size(); i++) {
+            Fragment fragment = mFragments.get(i);
+            if (fragment.isAdded()) {
+                transaction.hide(fragment);
+            }
         }
+        
+        // إظهار الـ Fragment المطلوب فقط
+        Fragment targetFragment = mFragments.get(position);
+        if (targetFragment.isAdded()) {
+            transaction.show(targetFragment);
+        }
+        
+        // استخدام commitNow() بدلاً من commit() للتنفيذ الفوري
+        // هذا يضمن عدم وجود أي تأخير حتى لو كان جزءاً من الثانية
+        transaction.commitNow();
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         // حفظ موضع الـ Fragment الحالي
-        // هذا مهم جداً عند تغيير اللغة أو الثيم لأن Activity يتم إعادة إنشائها
         outState.putInt(KEY_CURRENT_FRAGMENT, mCurrentFragmentIndex);
     }
 
@@ -155,4 +189,4 @@ public class MainActivity extends BaseActivity {
             mDrawerAdapter.setSelectedItem(position);
         }
     }
-}
+                        }
