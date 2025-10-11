@@ -25,8 +25,8 @@ public class MainActivity extends BaseActivity {
     private static final String KEY_CURRENT_FRAGMENT = "current_fragment_index";
     
     // Tags للـ Fragments لاستخدامها في FragmentManager
-    private static final String TAG_HOME = "homefragment";
-    private static final String TAG_SETTINGS = "settingsfragment";
+    private static final String TAG_HOME = "HomeFragment";
+    private static final String TAG_SETTINGS = "SettingsFragment";
 
     @Override
     protected void attachBaseContext(Context newBase) {
